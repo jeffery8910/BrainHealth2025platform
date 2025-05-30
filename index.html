@@ -33,7 +33,7 @@
              gap: 8px; /* Space between cards */
              width: auto; /* Adjust width based on content */
              margin: 10px auto; /* Center the grid */
-             max-width: 280px; /* Max width for the grid (4 * 60px card + 3 * 8px gap = 240 + 24 = 264px) */
+             max-width: 280px; /* Max width for the grid (4 * 60px card + 3 * 8px gap = 240 + 24 = 264px, added some buffer) */
          }
          .memory-card {
              width: 60px; /* Fixed width for cards */
@@ -43,7 +43,7 @@
              display: flex;
              justify-content: center;
              align-items: center;
-             font-size: 20px; /* Adjust font size for emoji */
+             font-size: 28px; /* Adjust font size for emoji */
              cursor: pointer;
              transition: transform 0.3s, background-color 0.3s;
              perspective: 1000px; /* For 3D flip effect */
@@ -60,7 +60,7 @@
          }
          .memory-card .card-front {
              background-color: #60a5fa; /* Tailwind blue-400 */
-             font-size: 24px; /* Font size for the '?' */
+             font-size: 30px; /* Font size for the '?' */
              color: white;
          }
          .memory-card .card-back {
@@ -120,12 +120,21 @@
              margin-bottom: 1rem;
          }
          .reference-section ul {
-             list-style-type: disc;
-             padding-left: 1.5rem;
+             list-style-type: decimal; /* Changed to decimal for numbered list */
+             padding-left: 2.5rem; /* Increased padding for numbers */
              color: #4b5563; /* Tailwind gray-600 */
          }
          .reference-section li {
              margin-bottom: 0.5rem;
+             font-size: 0.875rem; /* Tailwind text-sm */
+             line-height: 1.4;
+         }
+         .reference-section li a {
+             color: #2563eb; /* Tailwind blue-600 */
+             text-decoration: underline;
+         }
+         .reference-section li a:hover {
+             color: #1d4ed8; /* Tailwind blue-700 */
          }
      </style>
  </head>
@@ -155,46 +164,46 @@
              <div class="space-y-6">
                  <section class="bg-blue-50 p-6 rounded-lg shadow">
                      <h3 class="text-xl font-semibold text-blue-600 mb-3">一、可塑的大腦：掌控您的腦部健康</h3>
-                     <p class="mb-2">大腦具有<strong class="text-blue-700">神經可塑性</strong>，意味著它能終身形成新的神經連接。參與具挑戰性的活動能刺激腦源性神經營養因子 (BDNF)，對神經元生長至關重要。</p>
-                     <p>腦部健康並非一成不變，可以透過後天努力塑造。</p>
+                     <p class="mb-2">大腦具有<strong class="text-blue-700">神經可塑性</strong>，意味著它能終身形成新的神經連接。參與具挑戰性的活動能刺激腦源性神經營養因子 (BDNF)，對神經元生長至關重要。<sup>1</sup></p>
+                     <p>腦部健康並非一成不變，可以透過後天努力塑造。神經可塑性是生活方式干預之所以有效的科學基礎。</p>
                  </section>
                  <section class="bg-green-50 p-6 rounded-lg shadow">
                      <h3 class="text-xl font-semibold text-green-600 mb-3">二、腦部健康關鍵生活方式支柱</h3>
-                     <p class="mb-4">維護與提升腦部健康需從多方面著手，這些支柱緊密相連、相互影響：</p>
+                     <p class="mb-4">維護與提升腦部健康需從多方面著手，這些支柱緊密相連、相互影響：<sup>2</sup></p>
                      <ul class="list-disc list-inside space-y-3 pl-4">
                          <li>
                              <strong class="text-green-700">體育鍛鍊：</strong>
                              <ul class="list-circle list-inside pl-6 mt-1 space-y-1 text-sm text-gray-700">
-                                 <li><strong>有氧運動：</strong>每週至少150分鐘中等強度或75分鐘高強度 (快走、慢跑、游泳)。促進BDNF，改善記憶力、執行功能。</li>
-                                 <li><strong>阻力/肌力訓練：</strong>每週至少2次。增強認知控制、記憶表現。</li>
-                                 <li><strong>身心運動：</strong>瑜伽、太極拳。改善情緒調節、壓力減輕、認知彈性。</li>
-                                 <li><strong>雙重任務運動：</strong>運動結合認知挑戰 (邊走路邊算數)。</li>
+                                 <li><strong>有氧運動：</strong>每週至少150分鐘中等強度或75分鐘高強度 (快走、慢跑、游泳)。促進BDNF，改善記憶力、執行功能。<sup>4, 70</sup></li>
+                                 <li><strong>阻力/肌力訓練：</strong>每週至少2次。增強認知控制、記憶表現。<sup>11, 22</sup></li>
+                                 <li><strong>身心運動：</strong>瑜伽、太極拳。改善情緒調節、壓力減輕、認知彈性。<sup>2, 81, 95</sup></li>
+                                 <li><strong>雙重任務運動：</strong>運動結合認知挑戰 (邊走路邊算數)。<sup>1</sup></li>
                              </ul>
                          </li>
                          <li>
                              <strong class="text-green-700">飲食與營養：</strong>
                              <ul class="list-circle list-inside pl-6 mt-1 space-y-1 text-sm text-gray-700">
-                                 <li><strong>MIND飲食法：</strong>強調綠葉蔬菜(每週≥7份)、其他蔬菜(每週≥7份)、莓果(每週≥5份)、堅果(每週≥5份)、橄欖油、全穀物、魚類、豆類、家禽。限制紅肉、奶油、起司、甜食、油炸食品。</li>
-                                 <li><strong>關鍵營養素：</strong>Omega-3脂肪酸 (魚油、堅果)、抗氧化物 (蔬果)、維生素B群、水分。</li>
-                                 <li><strong>限制：</strong>「壞油」(沙拉油、反式脂肪)、加工食品、過量糖分。</li>
+                                 <li><strong>MIND飲食法：</strong>強調綠葉蔬菜(每週≥7份)、其他蔬菜(每週≥7份)、莓果(每週≥5份)、堅果(每週≥5份)、橄欖油、全穀物、魚類、豆類、家禽。限制紅肉、奶油、起司、甜食、油炸食品。<sup>2, 23 (MIND Diet Score 指引中的編號為2123，此處簡化)</sup></li>
+                                 <li><strong>關鍵營養素：</strong>Omega-3脂肪酸 (魚油、堅果)、抗氧化物 (蔬果)、維生素B群、水分。<sup>2, 40, 74</sup></li>
+                                 <li><strong>限制：</strong>「壞油」(沙拉油、反式脂肪)、加工食品、過量糖分。<sup>3, 125</sup></li>
                              </ul>
                          </li>
                          <li>
                              <strong class="text-green-700">腦力激盪與認知訓練：</strong>
                              <ul class="list-circle list-inside pl-6 mt-1 space-y-1 text-sm text-gray-700">
-                                 <li><strong>終身學習：</strong>學習新技能，如語言 (每日15-20分鐘)、樂器 (每日20-30分鐘)。</li>
+                                 <li><strong>終身學習：</strong>學習新技能，如語言 (每日15-20分鐘)、樂器 (每日20-30分鐘)。<sup>1, 131, 151</sup></li>
                                  <li><strong>益智遊戲與活動：</strong>閱讀、拼圖、棋盤遊戲、數獨。</li>
                                  <li><strong>保持好奇心與參與度。</strong></li>
                              </ul>
                          </li>
-                         <li><strong class="text-green-700">優質睡眠：</strong>對記憶鞏固至關重要。</li>
+                         <li><strong class="text-green-700">優質睡眠：</strong>對記憶鞏固至關重要。<sup>43</sup></li>
                          <li><strong class="text-green-700">社交互動：</strong>積極參與社交活動。</li>
-                         <li><strong class="text-green-700">壓力管理：</strong>學習放鬆技巧，如冥想、深呼吸。</li>
+                         <li><strong class="text-green-700">壓力管理：</strong>學習放鬆技巧，如冥想、深呼吸。<sup>61</sup></li>
                      </ul>
                  </section>
                  <section class="bg-yellow-50 p-6 rounded-lg shadow">
                      <h3 class="text-xl font-semibold text-yellow-700 mb-3">三、及早並終身實踐</h3>
-                     <p>及早並終身實踐有益大腦的行為，能帶來顯著的神經保護效益，可能延緩或降低認知衰退及失智症的風險。「永遠不會太早，也永遠不會太晚開始」保護我們的大腦。</p>
+                     <p>及早並終身實踐有益大腦的行為，能帶來顯著的神經保護效益，可能延緩或降低認知衰退及失智症的風險。「永遠不會太早，也永遠不會太晚開始」保護我們的大腦。<sup>3, 5</sup></p>
                  </section>
              </div>
          </div>
@@ -277,11 +286,161 @@
          </div>
 
          <section class="reference-section">
-             <h2>參考文獻</h2>
-             <ul>
-                 <li>促進大腦健康的日常行為 (使用者提供的文件)</li>
-                 <li>範例參考文獻條目 1</li>
-                 <li>範例參考文獻條目 2</li>
+             <h2>參考文獻 (整理自使用者提供文件)</h2>
+             <ul id="referenceList">
+                <li>Cognitive Training Strategies to Boost Brain Performance - Aviv Clinics, 檢索日期：5月 30, 2025， <a href="https://aviv-clinics.com/blog/brain-health/cognitive-training-advanced-strategies-to-improve-your-cognitive-performance/" target="_blank">https://aviv-clinics.com/blog/brain-health/cognitive-training-advanced-strategies-to-improve-your-cognitive-performance/</a></li>
+                <li>腦部退化讓人心驚驚？建議5大族群保養要注意，維持清晰思緒不費力 ..., 檢索日期：5月 30, 2025， <a href="https://acroviz.com/archives/1869/" target="_blank">https://acroviz.com/archives/1869/</a></li>
+                <li>10 Healthy Habits for Your Brain | Alzheimer's Association, 檢索日期：5月 30, 2025， <a href="https://www.alz.org/help-support/brain_health/10-healthy-habits-for-your-brain" target="_blank">https://www.alz.org/help-support/brain_health/10-healthy-habits-for-your-brain</a></li>
+                <li>8 brain health tips for a healthier you - Mayo Clinic, 檢索日期：5月 30, 2025， <a href="https://www.mayoclinic.org/healthy-lifestyle/healthy-aging/in-depth/brain-health-tips/art-20555198" target="_blank">https://www.mayoclinic.org/healthy-lifestyle/healthy-aging/in-depth/brain-health-tips/art-20555198</a></li>
+                <li>Brain Health and Healthy Aging: Key Steps for Maintaining Cognitive Well-Being, 檢索日期：5月 30, 2025， <a href="https://www.mclaren.org/main/news/brain-health-and-healthy-aging-key-steps-for-maint-5579" target="_blank">https://www.mclaren.org/main/news/brain-health-and-healthy-aging-key-steps-for-maint-5579</a></li>
+                <li>Healthy Brain Aging - Memory and Brain Wellness Center - University of Washington, 檢索日期：5月 30, 2025， <a href="https://depts.washington.edu/mbwc/resources/brain-health" target="_blank">https://depts.washington.edu/mbwc/resources/brain-health</a></li>
+                <li>Combination of healthy lifestyle traits may substantially reduce ..., 檢索日期：5月 30, 2025， <a href="https://www.alzheimers.gov/news/combination-healthy-lifestyle-traits-may-substantially-reduce-alzheimers-disease-risk" target="_blank">https://www.alzheimers.gov/news/combination-healthy-lifestyle-traits-may-substantially-reduce-alzheimers-disease-risk</a></li>
+                <li>Cognitive Health & Older Adults - Alzheimer's Los Angeles, 檢索日期：5月 30, 2025， <a href="https://www.alzheimersla.org/for-families/brain-health/cognitive-health-and-older-adults/" target="_blank">https://www.alzheimersla.org/for-families/brain-health/cognitive-health-and-older-adults/</a></li>
+                <li>Cognitive Fitness - Harvard Health Publishing, 檢索日期：5月 30, 2025， <a href="https://www.harvardhealthonlinelearning.com/courses/cognitive-fitness-2" target="_blank">https://www.harvardhealthonlinelearning.com/courses/cognitive-fitness-2</a></li>
+                <li>Improve Your Brain Health with a New Brain Care Score | Mass General Brigham, 檢索日期：5月 30, 2025， <a href="https://www.massgeneralbrigham.org/en/about/newsroom/articles/improve-your-brain-health" target="_blank">https://www.massgeneralbrigham.org/en/about/newsroom/articles/improve-your-brain-health</a></li>
+                <li>Lifestyle Strategies for Brain Health | The Institute for Functional Medicine, 檢索日期：5月 30, 2025， <a href="https://www.ifm.org/articles/lifestyle-approach-for-cognitive-decline" target="_blank">https://www.ifm.org/articles/lifestyle-approach-for-cognitive-decline</a></li>
+                <li>Cognitive Fitness - Professional and Lifelong Learning - Harvard University, 檢索日期：5月 30, 2025， <a href="https://pll.harvard.edu/course/cognitive-fitness" target="_blank">https://pll.harvard.edu/course/cognitive-fitness</a></li>
+                <li>Brain Fitness Over 50: Proactive Strategies for Maintaining Mental Vitality, 檢索日期：5月 30, 2025， <a href="https://www.carolinabraincenter.com/brain-fitness-over-50-proactive-strategies-for-maintaining-mental-vitality/" target="_blank">https://www.carolinabraincenter.com/brain-fitness-over-50-proactive-strategies-for-maintaining-mental-vitality/</a></li>
+                <li>5 tips to protect the brain from the effects of chronic stress - Heersink School of Medicine News - University of Alabama at Birmingham, 檢索日期：5月 30, 2025， <a href="https://www.uab.edu/medicine/news/neurology/5-tips-to-protect-the-brain-from-the-effects-of-chronic-stress" target="_blank">https://www.uab.edu/medicine/news/neurology/5-tips-to-protect-the-brain-from-the-effects-of-chronic-stress</a></li>
+                <li>Boost brain health with simple lifestyle practices | UCLA Health, 檢索日期：5月 30, 2025， <a href="https://www.uclahealth.org/news/article/boost-brain-health-with-daily-lifestyle-practices" target="_blank">https://www.uclahealth.org/news/article/boost-brain-health-with-daily-lifestyle-practices</a></li>
+                <li>6 Habits to Support Your Brain Health - Staying Sharp, 檢索日期：5月 30, 2025， <a href="https://stayingsharp.aarp.org/about/brain-health/brain-healthy-lifestyle" target="_blank">https://stayingsharp.aarp.org/about/brain-health/brain-healthy-lifestyle</a></li>
+                <li>Lifestyle Choices and Brain Health - PMC, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6787147/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC6787147/</a></li>
+                <li>Reducing Risk for Dementia | Alzheimer's Disease and Dementia - CDC, 檢索日期：5月 30, 2025， <a href="https://www.cdc.gov/alzheimers-dementia/prevention/index.html" target="_blank">https://www.cdc.gov/alzheimers-dementia/prevention/index.html</a></li>
+                <li>Preventing Dementia and Cognitive Decline - Physiopedia, 檢索日期：5月 30, 2025， <a href="https://www.physio-pedia.com/Preventing_Dementia_and_Cognitive_Decline" target="_blank">https://www.physio-pedia.com/Preventing_Dementia_and_Cognitive_Decline</a></li>
+                <li>The Six Pillars of Brain Health From Staying Sharp - AARP, 檢索日期：5月 30, 2025， <a href="https://stayingsharp.aarp.org/about/brain-health/the-science/" target="_blank">https://stayingsharp.aarp.org/about/brain-health/the-science/</a></li>
+                <li>Brain Health - The Center for Brain/Mind Medicine, 檢索日期：5月 30, 2025， <a href="https://cbmm.bwh.harvard.edu/index.php/support-education/brain-health/" target="_blank">https://cbmm.bwh.harvard.edu/index.php/support-education/brain-health/</a></li>
+                <li>Cognitive Health and Older Adults | National Institute on Aging, 檢索日期：5月 30, 2025， <a href="https://www.nia.nih.gov/health/brain-health/cognitive-health-and-older-adults" target="_blank">https://www.nia.nih.gov/health/brain-health/cognitive-health-and-older-adults</a></li>
+                <li>Aging: What to expect - Mayo Clinic, 檢索日期：5月 30, 2025， <a href="https://www.mayoclinic.org/healthy-lifestyle/healthy-aging/in-depth/aging/art-20046070" target="_blank">https://www.mayoclinic.org/healthy-lifestyle/healthy-aging/in-depth/aging/art-20046070</a></li>
+                <li>8 Weeks to Better Brain Health: Your Guide to Cognitive Wellness, 檢索日期：5月 30, 2025， <a href="https://www.butler.org/memoryandaging/8-weeks-to-better-brain-health-your-guide-to-cognitive-wellness" target="_blank">https://www.butler.org/memoryandaging/8-weeks-to-better-brain-health-your-guide-to-cognitive-wellness</a></li>
+                <li>Lifestyle Habits for a Healthy Brain - Society for Black Neuropsychology, 檢索日期：5月 30, 2025， <a href="https://soblackneuro.org/lifestyle-habits-for-a-healthy-brain/" target="_blank">https://soblackneuro.org/lifestyle-habits-for-a-healthy-brain/</a></li>
+                <li>Editorial: Midlife brain health: understanding brain aging in middle-age and effects of interventions to prevent neurodegeneration in late life - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2025.1568500/full" target="_blank">https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2025.1568500/full</a></li>
+                <li>Incorporating Lifestyle Medicine Into Parkinson Disease Care, 檢索日期：5月 30, 2025， <a href="https://www.med.upenn.edu/pdmdc/assets/user-content/lifestyle-medicine-for-parkinson-s-1737366942.pdf" target="_blank">https://www.med.upenn.edu/pdmdc/assets/user-content/lifestyle-medicine-for-parkinson-s-1737366942.pdf</a></li>
+                <li>Integrating Lifestyle Factor Science into Neuropsychological Practice: A National Academy of Neuropsychology Education Paper - Oxford Academic, 檢索日期：5月 30, 2025， <a href="https://academic.oup.com/acn/advance-article/doi/10.1093/arclin/acad078/7328866?login=false" target="_blank">https://academic.oup.com/acn/advance-article/doi/10.1093/arclin/acad078/7328866?login=false</a></li>
+                <li>Brain Health and Wellness & Primary Level of Risk Reduction, 檢索日期：5月 30, 2025， <a href="https://healthandwelfare.idaho.gov/providers/brain-health-alzheimers-dementia-family-caregivers-across-lifespan-providers/brain-health" target="_blank">https://healthandwelfare.idaho.gov/providers/brain-health-alzheimers-dementia-family-caregivers-across-lifespan-providers/brain-health</a></li>
+                <li>Move Your Mind: How Daily Physical Activity Boosts ... - Psychiatry.org, 檢索日期：5月 30, 2025， <a href="https://www.psychiatry.org/News-room/APA-Blogs/Daily-Physical-Activity-Boosts-Brain-Health" target="_blank">https://www.psychiatry.org/News-room/APA-Blogs/Daily-Physical-Activity-Boosts-Brain-Health</a></li>
+                <li>Dementia prevention, intervention, and care: 2020 report of the Lancet Commission [Livingston et al., 2020] - Reddit, 檢索日期：5月 30, 2025， <a href="https://www.reddit.com/r/ScientificNutrition/comments/i1x93e/dementia_prevention_intervention_and_care_2020/" target="_blank">https://www.reddit.com/r/ScientificNutrition/comments/i1x93e/dementia_prevention_intervention_and_care_2020/</a></li>
+                <li>expert reaction to The Lancet Commission 2020 report on dementia prevention, intervention and care | Science Media Centre, 檢索日期：5月 30, 2025， <a href="https://www.sciencemediacentre.org/expert-reaction-to-the-lancet-commission-2020-report-on-dementia-prevention-intervention-and-care/" target="_blank">https://www.sciencemediacentre.org/expert-reaction-to-the-lancet-commission-2020-report-on-dementia-prevention-intervention-and-care/</a></li>
+                <li>Mental Health Benefits of Exercise: For Depression and More - Healthline, 檢索日期：5月 30, 2025， <a href="https://www.healthline.com/health/depression/exercise" target="_blank">https://www.healthline.com/health/depression/exercise</a></li>
+                <li>How Does Exercise Improve Mental Health? - HelpGuide.org, 檢索日期：5月 30, 2025， <a href="https://www.helpguide.org/wellness/fitness/the-mental-health-benefits-of-exercise" target="_blank">https://www.helpguide.org/wellness/fitness/the-mental-health-benefits-of-exercise</a></li>
+                <li>Insomnia: Causes, Symptoms, What to Do When You Can't Sleep - HelpGuide.org, 檢索日期：5月 30, 2025， <a href="https://www.helpguide.org/wellness/sleep/insomnia-causes-and-cures" target="_blank">https://www.helpguide.org/wellness/sleep/insomnia-causes-and-cures</a></li>
+                <li>How to improve your mental health using physical activity | Mental Health Foundation, 檢索日期：5月 30, 2025， <a href="https://www.mentalhealth.org.uk/explore-mental-health/publications/how-improve-your-mental-health-using-physical-activity" target="_blank">https://www.mentalhealth.org.uk/explore-mental-health/publications/how-improve-your-mental-health-using-physical-activity</a></li>
+                <li>Brain Song: Review the BDNF Memory Protein Brain Trick For Stronger Brain Health Support - GlobeNewswire, 檢索日期：5月 30, 2025， <a href="https://www.globenewswire.com/news-release/2025/04/05/3056306/0/en/Brain-Song-Review-the-BDNF-Memory-Protein-Brain-Trick-For-Stronger-Brain-Health-Support.html" target="_blank">https://www.globenewswire.com/news-release/2025/04/05/3056306/0/en/Brain-Song-Review-the-BDNF-Memory-Protein-Brain-Trick-For-Stronger-Brain-Health-Support.html</a></li>
+                <li>Defining Optimal Brain Health in Adults: A Presidential Advisory From the American Heart Association/American Stroke Association - PubMed Central, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5654545/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC5654545/</a></li>
+                <li>A Primary Care Agenda for Brain Health: A Scientific Statement ..., 檢索日期：5月 30, 2025， <a href="https://www.ahajournals.org/doi/10.1161/STR.0000000000000367" target="_blank">https://www.ahajournals.org/doi/10.1161/STR.0000000000000367</a></li>
+                <li>Six ways to look after your brain health in your 20s and 30s - Trinity College Dublin, 檢索日期：5月 30, 2025， <a href="https://www.tcd.ie/news_events/articles/2024/six-ways-to-look-after-your-brain-health-in-your-20s-and-30s/" target="_blank">https://www.tcd.ie/news_events/articles/2024/six-ways-to-look-after-your-brain-health-in-your-20s-and-30s/</a></li>
+                <li>Memory loss: 7 tips to improve your memory - Mayo Clinic, 檢索日期：5月 30, 2025， <a href="https://www.mayoclinic.org/healthy-lifestyle/healthy-aging/in-depth/memory-loss/art-20046518" target="_blank">https://www.mayoclinic.org/healthy-lifestyle/healthy-aging/in-depth/memory-loss/art-20046518</a></li>
+                <li>First Steps to Protect Your Cognitive Vitality - Alzheimer's Drug Discovery Foundation, 檢索日期：5月 30, 2025， <a href="https://www.alzdiscovery.org/cognitive-vitality/first-steps" target="_blank">https://www.alzdiscovery.org/cognitive-vitality/first-steps</a></li>
+                <li>Improving Memory: Lifestyle Changes - Health | HowStuffWorks, 檢索日期：5月 30, 2025， <a href="https://health.howstuffworks.com/human-body/systems/nervous-system/improving-memory.htm" target="_blank">https://health.howstuffworks.com/human-body/systems/nervous-system/improving-memory.htm</a></li>
+                <li>Science-Backed Memory Techniques & Recall Tips for the Long Term | USAHS, 檢索日期：5月 30, 2025， <a href="https://www.usa.edu/blog/science-backed-memory-tips/" target="_blank">https://www.usa.edu/blog/science-backed-memory-tips/</a></li>
+                <li>How to Improve Focus, According to Mental Health Pros - Peloton, 檢索日期：5月 30, 2025， <a href="https://www.onepeloton.com/blog/how-to-improve-focus/" target="_blank">https://www.onepeloton.com/blog/how-to-improve-focus/</a></li>
+                <li>How to Improve Concentration and Focus: Our 15 Best Tips - BetterUp, 檢索日期：5月 30, 2025， <a href="https://www.betterup.com/blog/15-ways-to-improve-your-focus-and-concentration-skills" target="_blank">https://www.betterup.com/blog/15-ways-to-improve-your-focus-and-concentration-skills</a></li>
+                <li>Examining the prevention approach in National Dementia Plans from European and North American countries - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/dementia/articles/10.3389/frdem.2024.1463837/pdf" target="_blank">https://www.frontiersin.org/journals/dementia/articles/10.3389/frdem.2024.1463837/pdf</a></li>
+                <li>Global action plan on the public health response to dementia - IRIS Home, 檢索日期：5月 30, 2025， <a href="https://iris.who.int/bitstream/handle/10665/259615/9789241513487-eng.pdf?sequence=1" target="_blank">https://iris.who.int/bitstream/handle/10665/259615/9789241513487-eng.pdf?sequence=1</a></li>
+                <li>Cognitive Fitness | PDF | Physical Fitness | Brain - Scribd, 檢索日期：5月 30, 2025， <a href="https://www.scribd.com/document/419220898/Cognitive-Fitness" target="_blank">https://www.scribd.com/document/419220898/Cognitive-Fitness</a></li>
+                <li>Alzheimer's Disease | AD - MedlinePlus, 檢索日期：5月 30, 2025， <a href="https://medlineplus.gov/alzheimersdisease.html" target="_blank">https://medlineplus.gov/alzheimersdisease.html</a></li>
+                <li>The Four Pillars of Alzheimer's Prevention - PMC - PubMed Central, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5501038/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC5501038/</a></li>
+                <li>Daily Habits for Mental Clarity: Easy Ways to Improve Focus and Mood, 檢索日期：5月 30, 2025， <a href="https://gamedaymenshealth.com/daily-habits-for-mental-clarity/" target="_blank">https://gamedaymenshealth.com/daily-habits-for-mental-clarity/</a></li>
+                <li>5 Effective Ways to Improve Concentration and Focus in Adults | Clockwise, 檢索日期：5月 30, 2025， <a href="https://www.getclockwise.com/blog/improve-concentration-focus-adults-tips-causes" target="_blank">https://www.getclockwise.com/blog/improve-concentration-focus-adults-tips-causes</a></li>
+                <li>The Neurologist's Role in Promoting Brain Health: Emerging Issues in Neurology, 檢索日期：5月 30, 2025， <a href="https://www.neurology.org/doi/10.1212/WNL.0000000000210226" target="_blank">https://www.neurology.org/doi/10.1212/WNL.0000000000210226</a></li>
+                <li>Top 3 Health Resolutions for 2025: Brain, Sleep, Diet - Continental Hospitals, 檢索日期：5月 30, 2025， <a href="https://continentalhospitals.com/blog/top-3-health-resolutions-for-2025-brain-sleep-diet/" target="_blank">https://continentalhospitals.com/blog/top-3-health-resolutions-for-2025-brain-sleep-diet/</a></li>
+                <li>The 6 Pillars of Brain Health, 檢索日期：5月 30, 2025， <a href="https://health.clevelandclinic.org/brain-health" target="_blank">https://health.clevelandclinic.org/brain-health</a></li>
+                <li>9 Things You Should Do for Your Brain Health Every Day, According to Neurologists | TIME, 檢索日期：5月 30, 2025， <a href="https://time.com/7081407/brain-health-neurologist-tips/" target="_blank">https://time.com/7081407/brain-health-neurologist-tips/</a></li>
+                <li>Dementia and Cognitive Decline: A HEALM Approach - PMC - PubMed Central, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11556629/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC11556629/</a></li>
+                <li>Memory support training and lifestyle modifications to promote healthy aging in persons at risk for Alzheimer's disease, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10740219/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC10740219/</a></li>
+                <li>9個提升記憶力妙招｜董氏基金會華文心理健康網, 檢索日期：5月 30, 2025， <a href="https://www.etmh.org/Services/show_more?id=d7c84bd037af417e8607518ffa7dc588" target="_blank">https://www.etmh.org/Services/show_more?id=d7c84bd037af417e8607518ffa7dc588</a></li>
+                <li>健腦之道｜哈佛專家警告4大日常習慣恐加速大腦萎縮提早失智【附 ..., 檢索日期：5月 30, 2025， <a href="https://topick.hket.com/article/3942776/%E5%81%A5%E8%85%A6%E4%B9%8B%E9%81%93%EF%BD%9C%E5%93%88%E4%BD%9B%E5%B0%88%E5%AE%B6%E8%AD%A6%E5%91%8A4%E5%A4%A7%E7%84%A1%E5%BD%A2%E6%97%A5%E5%B8%B8%E7%BF%92%E6%85%A3%E3%80%80%E6%81%90%E5%8A%A0%E9%80%9F%E5%A4%A7%E8%85%A6%E8%90%8E%E7%B8%AE%E6%8F%90%E6%97%A9%E5%A4%B1%E6%99%BA%E3%80%90%E9%99%84%E9%A0%90%E9%98%B2%E8%85%A6%E9%80%80%E5%8C%96%E8%B2%BC%E5%A3%AB-%E9%A3%B2%E9%A3%9F%E6%8E%A8%E8%96%A6%E3%80%91" target="_blank">https://topick.hket.com/article/3942776/%E5%81%A5%E8%85%A6%E4%B9%8B%E9%81%93%EF%BD%9C%E5%93%88%E4%BD%9B%E5%B0%88%E5%AE%B6%E8%AD%A6%E5%91%8A4%E5%A4%A7%E7%84%A1%E5%BD%A2%E6%97%A5%E5%B8%B8%E7%BF%92%E6%85%A3%E3%80%80%E6%81%90%E5%8A%A0%E9%80%9F%E5%A4%A7%E8%85%A6%E8%90%8E%E7%B8%AE%E6%8F%90%E6%97%A9%E5%A4%B1%E6%99%BA%E3%80%90%E9%99%84%E9%A0%90%E9%98%B2%E8%85%A6%E9%80%80%E5%8C%96%E8%B2%BC%E5%A3%AB-%E9%A3%B2%E9%A3%9F%E6%8E%A8%E8%96%A6%E3%80%91</a></li>
+                <li>Dementia prevention, intervention, and care: 2020 report of the ..., 檢索日期：5月 30, 2025， <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30367-6/fulltext" target="_blank">https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30367-6/fulltext</a></li>
+                <li>Neurobiological effects of physical exercise - Wikipedia, 檢索日期：5月 30, 2025， <a href="https://en.wikipedia.org/wiki/Neurobiological_effects_of_physical_exercise" target="_blank">https://en.wikipedia.org/wiki/Neurobiological_effects_of_physical_exercise</a></li>
+                <li>科技魅癮｜動得聰明，動出健康！ 運動科學與身心腦健康, 檢索日期：5月 30, 2025， <a href="https://www.charmingscitech.nat.gov.tw/post/worldview7-health" target="_blank">https://www.charmingscitech.nat.gov.tw/post/worldview7-health</a></li>
+                <li>Exercise for Stress and Anxiety, 檢索日期：5月 30, 2025， <a href="https://adaa.org/living-with-anxiety/managing-anxiety/exercise-stress-and-anxiety" target="_blank">https://adaa.org/living-with-anxiety/managing-anxiety/exercise-stress-and-anxiety</a></li>
+                <li>Older Adult Activity: An Overview | Physical Activity Basics - CDC, 檢索日期：5月 30, 2025， <a href="https://www.cdc.gov/physical-activity-basics/guidelines/older-adults.html" target="_blank">https://www.cdc.gov/physical-activity-basics/guidelines/older-adults.html</a></li>
+                <li>Improving Concentration and Focus | Care Navigator | LTCFEDS, 檢索日期：5月 30, 2025， <a href="https://www.ltcfeds.gov/care-navigator/improving-concentration-and-focus" target="_blank">https://www.ltcfeds.gov/care-navigator/improving-concentration-and-focus</a></li>
+                <li>How to Improve Concentration: 14 Tips to Help You Focus - Healthline, 檢索日期：5月 30, 2025， <a href="https://www.healthline.com/health/mental-health/how-to-improve-concentration" target="_blank">https://www.healthline.com/health/mental-health/how-to-improve-concentration</a></li>
+                <li>FITT Principle - Physiopedia, 檢索日期：5月 30, 2025， <a href="https://www.physio-pedia.com/FITT_Principle" target="_blank">https://www.physio-pedia.com/FITT_Principle</a></li>
+                <li>Physical activity and neuroplasticity in neurodegenerative ... - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1502417/full" target="_blank">https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2025.1502417/full</a></li>
+                <li>How Exercise Can Help Boost Your Memory - Cleveland Clinic Health Essentials, 檢索日期：5月 30, 2025， <a href="https://health.clevelandclinic.org/exercise-to-boost-memory" target="_blank">https://health.clevelandclinic.org/exercise-to-boost-memory</a></li>
+                <li>Evidence Portfolio – Brain Health Subcommittee, Question 1, 檢索日期：5月 30, 2025， <a href="https://odphp.health.gov/sites/default/files/2019-10/Brain_Health_Q1_Cognition_Evidence_Portfolio.pdf" target="_blank">https://odphp.health.gov/sites/default/files/2019-10/Brain_Health_Q1_Cognition_Evidence_Portfolio.pdf</a></li>
+                <li>Just 5 minutes of physical activity a day may protect brain health with age, 檢索日期：5月 30, 2025， <a href="https://www.medicalnewstoday.com/articles/just-5-minutes-physical-activity-day-may-protect-brain-health-aging" target="_blank">https://www.medicalnewstoday.com/articles/just-5-minutes-physical-activity-day-may-protect-brain-health-aging</a></li>
+                <li>Cognitive Decline Prevention & Healthspan Optimization | Caring for the Body, 檢索日期：5月 30, 2025， <a href="https://www.caringforthebody.org/services/cognitive-decline-prevention-healthspan-optimization" target="_blank">https://www.caringforthebody.org/services/cognitive-decline-prevention-healthspan-optimization</a></li>
+                <li>Effects of human concurrent aerobic and resistance training on cognitive health: A systematic review with meta-analysis - Elsevier, 檢索日期：5月 30, 2025， <a href="https://www.elsevier.es/es-revista-international-journal-clinical-health-psychology-355-articulo-effects-human-concurrent-aerobic-resistance-S1697260025000171" target="_blank">https://www.elsevier.es/es-revista-international-journal-clinical-health-psychology-355-articulo-effects-human-concurrent-aerobic-resistance-S1697260025000171</a></li>
+                <li>Effects of human concurrent aerobic and resistance training on cognitive health: A systematic review with meta-analysis - ResearchGate, 檢索日期：5月 30, 2025， <a href="https://www.researchgate.net/publication/390026901_Effects_of_human_concurrent_aerobic_and_resistance_training_on_cognitive_health_A_systematic_review_with_meta-analysis" target="_blank">https://www.researchgate.net/publication/390026901_Effects_of_human_concurrent_aerobic_and_resistance_training_on_cognitive_health_A_systematic_review_with_meta-analysis</a></li>
+                <li>Physical activity and hippocampal volume in young adults - PMC, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11680645/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC11680645/</a></li>
+                <li>Physical activity changes during midlife link to brain integrity and amyloid burden - PMC, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12042120/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC12042120/</a></li>
+                <li>How to Improve Focus and Increase Attention Span - Post University, 檢索日期：5月 30, 2025， <a href="https://post.edu/blog/tips-for-improving-focus-and-attention-span/" target="_blank">https://post.edu/blog/tips-for-improving-focus-and-attention-span/</a></li>
+                <li>Effectiveness of exercise for improving cognition, memory and executive function: a systematic umbrella review and meta-meta-analysis | British Journal of Sports Medicine, 檢索日期：5月 30, 2025， <a href="https://bjsm.bmj.com/content/early/2025/03/06/bjsports-2024-108589" target="_blank">https://bjsm.bmj.com/content/early/2025/03/06/bjsports-2024-108589</a></li>
+                <li>The Impact of Tai Chi on Cognitive Performance in Older Adults: A Systematic Review and Meta-Analysis - PMC - PubMed Central, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4055508/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC4055508/</a></li>
+                <li>(PDF) Exploring the impact of acute physical activity on creative thinking: a comprehensive narrative review with a focus on activity type and intensity - ResearchGate, 檢索日期：5月 30, 2025， <a href="https://www.researchgate.net/publication/377353787_Exploring_the_impact_of_acute_physical_activity_on_creative_thinking_a_comprehensive_narrative_review_with_a_focus_on_activity_type_and_intensity" target="_blank">https://www.researchgate.net/publication/377353787_Exploring_the_impact_of_acute_physical_activity_on_creative_thinking_a_comprehensive_narrative_review_with_a_focus_on_activity_type_and_intensity</a></li>
+                <li>The effects of yoga on patients with mild cognitive impairment and dementia: A scoping review, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6541218/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC6541218/</a></li>
+                <li>Evaluation of the efficacy of Tai Chi on the cognitive function of patients with mild cognitive dysfunction and research on its mechanism - PMC, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12012717/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC12012717/</a></li>
+                <li>Effects of Tai Chi Chuan on cognitive function in adults 60 years or older with mild cognitive impairment: a systematic review and meta-analysis - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1556622/epub" target="_blank">https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1556622/epub</a></li>
+                <li>Optimal dose and type of exercise to improve cognitive function in patients with mild cognitive impairment: a systematic review and network meta-analysis of RCTs - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2024.1436499/epub" target="_blank">https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2024.1436499/epub</a></li>
+                <li>穩定自律神經不靠吃藥掌握5關鍵自律神經不失調 - 啟新健康世界-專業 ..., 檢索日期：5月 30, 2025， <a href="https://www.ch.com.tw/index.aspx?sv=ch_fitness&chapter=epaper20190106" target="_blank">https://www.ch.com.tw/index.aspx?sv=ch_fitness&chapter=epaper20190106</a></li>
+                <li>From contemplation to serenity: how yoga meditation improves the mental health of female college students? - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1545943/full" target="_blank">https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1545943/full</a></li>
+                <li>Neurobiological Changes Induced by Mindfulness and Meditation: A Systematic Review, 檢索日期：5月 30, 2025， <a href="https://www.mdpi.com/2227-9059/12/11/2613" target="_blank">https://www.mdpi.com/2227-9059/12/11/2613</a></li>
+                <li>Cognitive Optimization Program: Unleashing Your Mental Potential: A Guide to Cognitive Optimization - FasterCapital, 檢索日期：5月 30, 2025， <a href="https://fastercapital.com/content/Cognitive-Optimization-Program--Unleashing-Your-Mental-Potential--A-Guide-to-Cognitive-Optimization.html" target="_blank">https://fastercapital.com/content/Cognitive-Optimization-Program--Unleashing-Your-Mental-Potential--A-Guide-to-Cognitive-Optimization.html</a></li>
+                <li>Effects of Tai Chi Chuan on cognitive function in adults 60 years or older with mild cognitive impairment: a systematic review and meta-analysis - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1556622/full" target="_blank">https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1556622/full</a></li>
+                <li>Impact of Tai Chi Therapy on Fatigue and Cognitive Function in Individuals With Chronic Fatigue Syndrome: Protocol for a Pilot Randomized Controlled Trial, 檢索日期：5月 30, 2025， <a href="https://www.researchprotocols.org/2025/1/e65958" target="_blank">https://www.researchprotocols.org/2025/1/e65958</a></li>
+                <li>Is yoga good for your brain health? | Cognitive Vitality, 檢索日期：5月 30, 2025， <a href="https://www.alzdiscovery.org/cognitive-vitality/blog/is-yoga-good-for-your-brain-health" target="_blank">https://www.alzdiscovery.org/cognitive-vitality/blog/is-yoga-good-for-your-brain-health</a></li>
+                <li>Brief structured respiration practices enhance mood and reduce physiological arousal - PMC - PubMed Central, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9873947/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC9873947/</a></li>
+                <li>Yoga Impacts Cognitive Health: Neurophysiological Changes and Stress-regulation Mechanisms - PMC - PubMed Central, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10033324/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC10033324/</a></li>
+                <li>The Benefits of Deep Breathing and Why It Works | Psychology Today, 檢索日期：5月 30, 2025， <a href="https://www.psychologytoday.com/us/blog/evidence-based-living/202409/the-benefits-of-deep-breathing-and-why-it-works" target="_blank">https://www.psychologytoday.com/us/blog/evidence-based-living/202409/the-benefits-of-deep-breathing-and-why-it-works</a></li>
+                <li>(PDF) A systematic review of the health effects of yoga for people with mild cognitive impairment and dementia - ResearchGate, 檢索日期：5月 30, 2025， <a href="https://www.researchgate.net/publication/367304184_A_systematic_review_of_the_health_effects_of_yoga_for_people_with_mild_cognitive_impairment_and_dementia" target="_blank">https://www.researchgate.net/publication/367304184_A_systematic_review_of_the_health_effects_of_yoga_for_people_with_mild_cognitive_impairment_and_dementia</a></li>
+                <li>Effects of Tai Chi Chuan on cognitive function in adults 60 years or older with mild cognitive impairment: a systematic review and meta-analysis - PMC, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11996854/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC11996854/</a></li>
+                <li>Effects of tai chi based on information and communication technology for patients with mild cognitive impairment on cognitive an - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2024.1495645/pdf" target="_blank">https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2024.1495645/pdf</a></li>
+                <li>Deep Breathing and Mindfulness: Simple Techniques to Promote Students' Self-regulation and Well-Being from the Inside Out | Request PDF - ResearchGate, 檢索日期：5月 30, 2025， <a href="https://www.researchgate.net/publication/374964675_Deep_Breathing_and_Mindfulness_Simple_Techniques_to_Promote_Students'_Self-regulation_and_Well-Being_from_the_Inside_Out" target="_blank">https://www.researchgate.net/publication/374964675_Deep_Breathing_and_Mindfulness_Simple_Techniques_to_Promote_Students'_Self-regulation_and_Well-Being_from_the_Inside_Out</a></li>
+                <li>Positive Psychology Interventions in Early-Stage Cognitive Decline Related to Dementia: A Systematic Review of Cognitive and Brain Functioning Outcomes of Mindfulness Interventions - MDPI, 檢索日期：5月 30, 2025， <a href="https://www.mdpi.com/2076-3425/15/6/580" target="_blank">https://www.mdpi.com/2076-3425/15/6/580</a></li>
+                <li>Mental Health Promotion in Public Health: Perspectives and Strategies From Positive Psychology - PMC, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3134513/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC3134513/</a></li>
+                <li>Yoga-based exercise improves health-related quality of life and mental well-being in older people: a systematic review of randomised controlled trials - Oxford Academic, 檢索日期：5月 30, 2025， <a href="https://academic.oup.com/ageing/article/47/4/537/4951829" target="_blank">https://academic.oup.com/ageing/article/47/4/537/4951829</a></li>
+                <li>4-7-8 breathing: How it works, benefits, and uses - Medical News Today, 檢索日期：5月 30, 2025， <a href="https://www.medicalnewstoday.com/articles/324417" target="_blank">https://www.medicalnewstoday.com/articles/324417</a></li>
+                <li>www.alzdiscovery.org, 檢索日期：5月 30, 2025， <a href="https://www.alzdiscovery.org/uploads/cognitive_vitality_media/Breathing_Techniques.pdf" target="_blank">https://www.alzdiscovery.org/uploads/cognitive_vitality_media/Breathing_Techniques.pdf</a></li>
+                <li>The Effect of Deep and Slow Breathing on Retention and Cognitive Function in the Elderly Population - PMC - PubMed Central, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10047962/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC10047962/</a></li>
+                <li>3 science-based strategies to increase your creativity | - TED Ideas, 檢索日期：5月 30, 2025， <a href="https://ideas.ted.com/3-science-based-strategies-to-increase-your-creativity/" target="_blank">https://ideas.ted.com/3-science-based-strategies-to-increase-your-creativity/</a></li>
+                <li>Associations between Nature Exposure and Health: A Review of the Evidence - PMC, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8125471/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC8125471/</a></li>
+                <li>Long-Term Exposure to Greenspace and Cognitive Function during the Lifespan: A Systematic Review, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9517665/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC9517665/</a></li>
+                <li>The effectiveness of Tai Chi for short-term cognitive function improvement in the early stages of dementia in the elderly: a systematic literature review, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6512568/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC6512568/</a></li>
+                <li>Brief slow-paced breathing improves working memory, mood, and stress in college students, 檢索日期：5月 30, 2025， <a href="https://www.researchgate.net/publication/391912966_Brief_slow-paced_breathing_improves_working_memory_mood_and_stress_in_college_students" target="_blank">https://www.researchgate.net/publication/391912966_Brief_slow-paced_breathing_improves_working_memory_mood_and_stress_in_college_students</a></li>
+                <li>Effects of interventions of mindfulness on executive functions in adults: a systematic review, 檢索日期：5月 30, 2025， <a href="http://www.scielo.edu.uy/pdf/cp/v19n1/en_1688-4221-cp-19-01-e3748.pdf" target="_blank">http://www.scielo.edu.uy/pdf/cp/v19n1/en_1688-4221-cp-19-01-e3748.pdf</a></li>
+                <li>11 Life-Changing Holistic Habits to Transform Your Well-Being - Orbasics, 檢索日期：5月 30, 2025， <a href="https://orbasics.com/blogs/stories/life-changing-holistic-habits" target="_blank">https://orbasics.com/blogs/stories/life-changing-holistic-habits</a></li>
+                <li>Creating a Holistic Lifestyle: The Beginners Guide - Becoming You With Julie, 檢索日期：5月 30, 2025， <a href="https://becomingyouwithjulie.com/creating-a-holistic-lifestyle-beginners-guide/" target="_blank">https://becomingyouwithjulie.com/creating-a-holistic-lifestyle-beginners-guide/</a></li>
+                <li>Mindfulness-Based Cognitive Therapy in Clinical Practice: A Systematic Review of Neurocognitive Outcomes and Applications for Mental Health and Well-Being - MDPI, 檢索日期：5月 30, 2025， <a href="https://www.mdpi.com/2077-0383/14/5/1703" target="_blank">https://www.mdpi.com/2077-0383/14/5/1703</a></li>
+                <li>Fixing our focus: Training attention to regulate emotion - PMC, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2970710/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC2970710/</a></li>
+                <li>Dose-response relationship between exercise and cognitive function in older adults with and without cognitive impairment: A systematic review and meta-analysis | PLOS One, 檢索日期：5月 30, 2025， <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0210036" target="_blank">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0210036</a></li>
+                <li>Artistic Activities and Developing Creative Thinking Skills among Children in Early Childhood - ResearchGate, 檢索日期：5月 30, 2025， <a href="https://www.researchgate.net/publication/379575859_Artistic_Activities_and_Developing_Creative_Thinking_Skills_among_Children_in_Early_Childhood" target="_blank">https://www.researchgate.net/publication/379575859_Artistic_Activities_and_Developing_Creative_Thinking_Skills_among_Children_in_Early_Childhood</a></li>
+                <li>Reading Does More Than Exercise Your Brain — It's Also Good for Your Physical Health, 檢索日期：5月 30, 2025， <a href="https://thevariel.com/blog/reading-does-more-than-exercise-your-brain/" target="_blank">https://thevariel.com/blog/reading-does-more-than-exercise-your-brain/</a></li>
+                <li>Effects of group music sessions on cognitive and psychological functions in healthy older adults - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/aging/articles/10.3389/fragi.2025.1513359/full" target="_blank">https://www.frontiersin.org/journals/aging/articles/10.3389/fragi.2025.1513359/full</a></li>
+                <li>Playing an instrument, singing may help preserve brain health - Medical News Today, 檢索日期：5月 30, 2025， <a href="https://www.medicalnewstoday.com/articles/playing-an-instrument-singing-may-help-preserve-brain-health" target="_blank">https://www.medicalnewstoday.com/articles/playing-an-instrument-singing-may-help-preserve-brain-health</a></li>
+                <li>Brain Health | Lifestyle Factor Literature - Physical Activity - Social ..., 檢索日期：5月 30, 2025， <a href="https://nanonline.org/Nanweb24/NAN/_ProfessionalResources/Brain_Health_Hub/Brain_Health_Lifestyle_Factor_Literature.aspx" target="_blank">https://nanonline.org/Nanweb24/NAN/_ProfessionalResources/Brain_Health_Hub/Brain_Health_Lifestyle_Factor_Literature.aspx</a></li>
+                <li>MIND diet score - Variable Details | RADC, 檢索日期：5月 30, 2025， <a href="https://www.radc.rush.edu/docs/var/detail.htm;jsessionid=030CCEF7DEBB3ECC369BD25BB85C7142?category=Nutrition&subcategory=Diet+scores&variable=minddiet2022_sc" target="_blank">https://www.radc.rush.edu/docs/var/detail.htm;jsessionid=030CCEF7DEBB3ECC369BD25BB85C7142?category=Nutrition&subcategory=Diet+scores&variable=minddiet2022_sc</a></li>
+                <li>Diet Review: MIND Diet - The Nutrition Source, 檢索日期：5月 30, 2025， <a href="https://nutritionsource.hsph.harvard.edu/healthy-weight/diet-reviews/mind-diet/" target="_blank">https://nutritionsource.hsph.harvard.edu/healthy-weight/diet-reviews/mind-diet/</a></li>
+                <li>吃對油，不失智：腦科權威全面破解失智真相，改變用油和飲食，就能改善大腦健康 - 博客來, 檢索日期：5月 30, 2025， <a href="https://www.books.com.tw/products/0010739718" target="_blank">https://www.books.com.tw/products/0010739718</a></li>
+                <li>我的起源故事：探討食物、腦健康與韌性之間的關聯, 檢索日期：5月 30, 2025， <a href="https://www.aimhealthyu.com/tw/column/3660/food-brain-health-resilience" target="_blank">https://www.aimhealthyu.com/tw/column/3660/food-brain-health-resilience</a></li>
+                <li>博客來-吃對油，不失智：腦科權威全面破解失智真相，改變用油和 ..., 檢索日期：5月 30, 2025， <a href="https://www.books.com.tw/products/E050094156" target="_blank">https://www.books.com.tw/products/E050094156</a></li>
+                <li>不同年齡層保健食品怎麼選？醫學博士這樣建議| MR. UNICORN 獨角 ..., 檢索日期：5月 30, 2025， <a href="https://www.mrunicorn.com.tw/Article/Detail/96684" target="_blank">https://www.mrunicorn.com.tw/Article/Detail/96684</a></li>
+                <li>改善記憶力和注意力：認知訓練的科學與實踐 - LTPA SOLUTION, 檢索日期：5月 30, 2025， <a href="https://www.ltpasolution.com/cognitive_training.html" target="_blank">https://www.ltpasolution.com/cognitive_training.html</a></li>
+                <li>Brain training and dementia | Alzheimer's Society, 檢索日期：5月 30, 2025， <a href="https://www.alzheimers.org.uk/about-dementia/managing-the-risk-of-dementia/additional-treatments-for-dementia-risk/brain-training" target="_blank">https://www.alzheimers.org.uk/about-dementia/managing-the-risk-of-dementia/additional-treatments-for-dementia-risk/brain-training</a></li>
+                <li>30 Brain Exercises to Protect and Bolster Cognitive Health - Dr. Axe, 檢索日期：5月 30, 2025， <a href="https://draxe.com/health/brain-exercises/" target="_blank">https://draxe.com/health/brain-exercises/</a></li>
+                <li>Effects of non-invasive brain stimulation on cognitive function in healthy aging and Alzheimer's disease: a systematic review and meta-analysis, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4496249/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC4496249/</a></li>
+                <li>A Systematic Review and Meta-Analysis of rTMS Effects on Cognitive Enhancement in Mild Cognitive Impairment and Alzheimer's Disease - PMC, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6995441/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC6995441/</a></li>
+                <li>Staying Mentally Sharp: Games and Activities for Cognitive Health - Capri Communities, 檢索日期：5月 30, 2025， <a href="https://www.capricommunities.com/staying-mentally-sharp/" target="_blank">https://www.capricommunities.com/staying-mentally-sharp/</a></li>
+                <li>What Research Says About How Playing an Instrument Benefits Your Brain, 檢索日期：5月 30, 2025， <a href="https://creyos.com/blog/how-playing-an-instrument-benefits-your-brain" target="_blank">https://creyos.com/blog/how-playing-an-instrument-benefits-your-brain</a></li>
+                <li>Cognitive, Motor and Social Factors of Music Instrument Training Programs for Older Adults' Improved Wellbeing - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02868/full" target="_blank">https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02868/full</a></li>
+                <li>Liblime 10 Ways Reading Improves Cognitive Function, 檢索日期：5月 30, 2025， <a href="https://liblime.com/2025/03/03/10-ways-reading-improves-cognitive-function/" target="_blank">https://liblime.com/2025/03/03/10-ways-reading-improves-cognitive-function/</a></li>
+                <li>Brain Health Benefits of Learning an Instrument - AARP, 檢索日期：5月 30, 2025， <a href="https://www.aarp.org/health/healthy-living/brain-health-benefits-of-learning-an-instrument/" target="_blank">https://www.aarp.org/health/healthy-living/brain-health-benefits-of-learning-an-instrument/</a></li>
+                <li>The Benefits of Learning to Play an Instrument: What Studies Show - Ingleside, 檢索日期：5月 30, 2025， <a href="https://inglesideonline.org/blog/the-benefits-of-learning-to-play-an-instrument-what-studies-show/" target="_blank">https://inglesideonline.org/blog/the-benefits-of-learning-to-play-an-instrument-what-studies-show/</a></li>
+                <li>Reading activity prevents long-term decline in cognitive function in older people: evidence from a 14-year longitudinal study, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8482376/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC8482376/</a></li>
+                <li>Full article: The effects of language learning on cognitive functioning and psychosocial well-being in cognitively healthy older adults: A semi-blind randomized controlled trial, 檢索日期：5月 30, 2025， <a href="https://www.tandfonline.com/doi/full/10.1080/13825585.2024.2384107?src=exp-la" target="_blank">https://www.tandfonline.com/doi/full/10.1080/13825585.2024.2384107?src=exp-la</a></li>
+                <li>Study: Language Learning Associated With Cognitive Benefits for Older Adults, 檢索日期：5月 30, 2025， <a href="https://www.pharmacytimes.com/view/study-language-learning-associated-with-cognitive-benefits-for-older-adults" target="_blank">https://www.pharmacytimes.com/view/study-language-learning-associated-with-cognitive-benefits-for-older-adults</a></li>
+                <li>Musical practice as an enhancer of cognitive function in healthy aging - A systematic review and meta-analysis - PubMed Central, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6258526/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC6258526/</a></li>
+                <li>Cognitive Benefits From a Musical Activity in Older Adults - Frontiers, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.00652/full" target="_blank">https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.00652/full</a></li>
+                <li>The Mental Health Benefits of Creativity - Diversus Health, 檢索日期：5月 30, 2025， <a href="https://diversushealth.org/mental-health-blog/the-mental-health-benefits-of-creativity/" target="_blank">https://diversushealth.org/mental-health-blog/the-mental-health-benefits-of-creativity/</a></li>
+                <li>The Holistic Life-Crafting Model: a systematic literature review of meaning-making behaviors, 檢索日期：5月 30, 2025， <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1271188/full" target="_blank">https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1271188/full</a></li>
+                <li>Reading Improves Memory, Concentration, and Stress | National University, 檢索日期：5月 30, 2025， <a href="https://www.nu.edu/blog/reading-improves-memory-concentration-and-stress/" target="_blank">https://www.nu.edu/blog/reading-improves-memory-concentration-and-stress/</a></li>
+                <li>When is it too late to learn a language?, 檢索日期：5月 30, 2025， <a href="https://www.icls.edu/blog/when-is-it-too-late-to-learn-a-language" target="_blank">https://www.icls.edu/blog/when-is-it-too-late-to-learn-a-language</a></li>
+                <li>Cognitive Benefits of Language Learning: Broadening our perspectives Final Report to the British Academy, 檢索日期：5月 30, 2025， <a href="https://www.thebritishacademy.ac.uk/documents/287/Cognitive-Benefits-Language-Learning-Final-Report.pdf" target="_blank">https://www.thebritishacademy.ac.uk/documents/287/Cognitive-Benefits-Language-Learning-Final-Report.pdf</a></li>
+                <li>Lifestyle Medicine Pillars - Stanford Center on Longevity, 檢索日期：5月 30, 2025， <a href="https://longevity.stanford.edu/lifestyle/lifestyle-pillars/" target="_blank">https://longevity.stanford.edu/lifestyle/lifestyle-pillars/</a></li>
+                <li>The effects of language learning on cognitive functioning and psychosocial well-being in cognitively healthy older adults: A semi-blind randomized controlled trial, 檢索日期：5月 30, 2025， <a href="https://www.tandfonline.com/doi/abs/10.1080/13825585.2024.2384107" target="_blank">https://www.tandfonline.com/doi/abs/10.1080/13825585.2024.2384107</a></li>
+                <li>Foreign language training as cognitive therapy for age-related cognitive decline: A hypothesis for future research - PubMed Central, 檢索日期：5月 30, 2025， <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3890428/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC3890428/</a></li>
+                <li>The Holistic Life-Crafting Model: a systematic literature review of meaning-making behaviors, 檢索日期：5月 30, 2025， <a href="https://www.researchgate.net/publication/374997956_The_Holistic_Life-Crafting_Model_a_systematic_literature_review_of_meaning-making_behaviors" target="_blank">https://www.researchgate.net/publication/374997956_The_Holistic_Life-Crafting_Model_a_systematic_literature_review_of_meaning-making_behaviors</a></li>
              </ul>
          </section>
      </div>
@@ -301,11 +460,11 @@
              let i, tabcontent, tabbuttons;
              tabcontent = document.getElementsByClassName("tab-content");
              for (i = 0; i < tabcontent.length; i++) {
-                 tabcontent[i].style.display = "none"; // Corrected: apply to tabcontent[i]
+                 tabcontent[i].style.display = "none";
              }
              tabbuttons = document.getElementsByClassName("tab-button");
              for (i = 0; i < tabbuttons.length; i++) {
-                 tabbuttons[i].className = tabbuttons[i].className.replace(" active", ""); // Corrected: apply to tabbuttons[i]
+                 tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
              }
              document.getElementById(tabName).style.display = "block";
              event.currentTarget.className += " active";
@@ -314,11 +473,11 @@
          // MIND Diet Score Calculator
          function calculateMindScore() {
              const form = document.getElementById('mindDietForm');
-             const checkboxes = form.querySelectorAll('input[type="checkbox"]'); // Corrected selector
+             const checkboxes = form.querySelectorAll('input[type="checkbox"]');
              let score = 0;
              let totalPossiblePoints = 0;
              checkboxes.forEach(checkbox => {
-                 if (checkbox.dataset.points) { // Ensure it's a scorable item
+                 if (checkbox.dataset.points) {
                     totalPossiblePoints += parseInt(checkbox.dataset.points);
                     if (checkbox.checked) {
                         score += parseInt(checkbox.dataset.points);
@@ -369,18 +528,26 @@
          let matchedPairs = 0;
          let totalPairs = 0;
          let memoryGameActive = false;
-         const memoryEmojis = ['🧠', '💪', '🥗', '📖', '🎶', '😴', '🗣️', '🧘'];
+         const memoryEmojis = ['🧠', '💪', '🥗', '📖', '🎶', '😴', '🗣️', '🧘']; // Brain, Exercise, Diet, Learning, Music, Sleep, Social, Mindful
 
          function startMemoryGame() {
              const gameContainer = document.getElementById('memoryGameContainer');
-             gameContainer.innerHTML = ''; // Clear previous game
+             gameContainer.innerHTML = ''; 
              memoryCards = [];
              flippedCards = [];
              matchedPairs = 0;
              memoryGameActive = true;
 
-             // Use 4 pairs (8 cards) for a 4x2 grid, or adjust as needed
-             let gameEmojis = memoryEmojis.slice(0, 4).concat(memoryEmojis.slice(0, 4));
+             let gameEmojisPool = [...memoryEmojis]; 
+             let selectedEmojis = [];
+             
+             for (let i = 0; i < 4; i++) { 
+                 if (gameEmojisPool.length === 0) gameEmojisPool = [...memoryEmojis]; 
+                 const randomIndex = Math.floor(Math.random() * gameEmojisPool.length);
+                 selectedEmojis.push(gameEmojisPool.splice(randomIndex, 1)[0]);
+             }
+             let gameEmojis = selectedEmojis.concat(selectedEmojis); 
+
              totalPairs = gameEmojis.length / 2;
              shuffleArray(gameEmojis);
 
@@ -402,11 +569,11 @@
 
              const cardFaceFront = document.createElement('div');
              cardFaceFront.classList.add('card-face', 'card-front');
-             cardFaceFront.textContent = '?'; // Show '?' on the front
+             cardFaceFront.textContent = '?';
 
              const cardFaceBack = document.createElement('div');
              cardFaceBack.classList.add('card-face', 'card-back');
-             cardFaceBack.textContent = emoji; // Emoji on the back
+             cardFaceBack.textContent = emoji; 
 
              card.appendChild(cardFaceFront);
              card.appendChild(cardFaceBack);
@@ -439,7 +606,6 @@
                      setTimeout(() => showModal('gameResultModal', '恭喜！', `您成功找到了所有 ${totalPairs} 組配對！`, () => startMemoryGame()), 500);
                  }
              } else {
-                 // Not a match, flip back after a delay
                  setTimeout(() => {
                      card1.classList.remove('flipped');
                      card2.classList.remove('flipped');
@@ -451,7 +617,7 @@
          function shuffleArray(array) {
              for (let i = array.length - 1; i > 0; i--) {
                  const j = Math.floor(Math.random() * (i + 1));
-                 [array[i], array[j]] = [array[j], array[i]]; // Corrected array element access
+                 [array[i], array[j]] = [array[j], array[i]];
              }
          }
 
@@ -461,11 +627,11 @@
              mathNum1 = Math.floor(Math.random() * 10) + 1;
              mathNum2 = Math.floor(Math.random() * 10) + 1;
              const operations = ['+', '-', '*'];
-             currentMathOperation = operations[Math.floor(Math.random() * operations.length)]; // Corrected array element access
+             currentMathOperation = operations[Math.floor(Math.random() * operations.length)];
 
              let problemText = `${mathNum1} ${currentMathOperation} ${mathNum2} = ?`;
              if (currentMathOperation === '-' && mathNum1 < mathNum2) {
-                 [mathNum1, mathNum2] = [mathNum2, mathNum1]; // Swap to ensure positive result for simplicity
+                 [mathNum1, mathNum2] = [mathNum2, mathNum1]; 
                  problemText = `${mathNum1} ${currentMathOperation} ${mathNum2} = ?`;
              }
 
@@ -489,7 +655,7 @@
             }
              const userAnswer = parseInt(userAnswerText);
              const resultDiv = document.getElementById('mathResult');
-             if (isNaN(userAnswer)) { // Should not happen if input type="number" but good to check
+             if (isNaN(userAnswer)) { 
                  resultDiv.textContent = "請輸入有效的數字。";
                  resultDiv.className = "mt-3 text-sm h-5 text-red-500";
                  return;
@@ -513,15 +679,15 @@
              let arr = word.split('');
              for (let i = arr.length - 1; i > 0; i--) {
                  const j = Math.floor(Math.random() * (i + 1));
-                 [arr[i], arr[j]] = [arr[j], arr[i]]; // Corrected array element access
+                 [arr[i], arr[j]] = [arr[j], arr[i]];
              }
              return arr.join('');
          }
 
          function startWordScramble() {
-             currentWord = brainWords[Math.floor(Math.random() * brainWords.length)]; // Corrected array element access
+             currentWord = brainWords[Math.floor(Math.random() * brainWords.length)]; 
              currentScrambled = scrambleWord(currentWord);
-             while(currentScrambled === currentWord && currentWord.length > 1) { // Ensure it's actually scrambled
+             while(currentScrambled === currentWord && currentWord.length > 1) { 
                   currentScrambled = scrambleWord(currentWord);
              }
              document.getElementById('scrambledWord').textContent = currentScrambled;
@@ -554,20 +720,19 @@
              document.getElementById('modalMessage').textContent = message;
              const modalButton = document.getElementById('modalButton');
              
-             // Clone and replace the button to remove old event listeners properly
              const newButton = modalButton.cloneNode(true);
              modalButton.parentNode.replaceChild(newButton, modalButton);
-             const freshButton = document.getElementById('modalButton'); // Get the new button
+             const freshButton = document.getElementById('modalButton'); 
 
              if (buttonAction) {
                  freshButton.textContent = "再玩一次";
-                 freshButton.onclick = () => { // Assign new click listener
+                 freshButton.onclick = () => { 
                      closeModal(modalId);
                      buttonAction();
                  };
              } else {
                   freshButton.textContent = "知道了";
-                  freshButton.onclick = () => closeModal(modalId); // Assign new click listener
+                  freshButton.onclick = () => closeModal(modalId); 
              }
              modal.style.display = "block";
          }
@@ -576,7 +741,6 @@
              document.getElementById(modalId).style.display = "none";
          }
 
-         // Close modal if user clicks outside of it
          window.onclick = function(event) {
              const modal = document.getElementById('gameResultModal');
              if (event.target == modal) {
@@ -584,16 +748,13 @@
              }
          }
 
-         // Initialize default tab and games on page load
          document.addEventListener('DOMContentLoaded', () => {
-             // Ensure the first tab is displayed
              const firstTabButton = document.querySelector('.tab-button');
              if (firstTabButton) {
                 openTab({ currentTarget: firstTabButton }, 'learningUnits');
              }
              startMathGame(); 
              startWordScramble();
-             // Memory game starts when user clicks "開始遊戲"
          });
 
      </script>
