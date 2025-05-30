@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大腦健康中心</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button.active {
+            background-color: #2563eb; /* Tailwind blue-600 */
+            color: white;
+        }
+        .game-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Memory Game Specific Styles */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 320px; /* Adjust as needed */
+            margin: 20px auto;
+        }
+        .memory-card {
+            width: 70px;
+            height: 70px;
+            background-color: #93c5fd; /* Tailwind blue-300 */
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            perspective: 1000px;
+        }
+        .memory-card .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+        .memory-card .card-front {
+            background-color: #60a5fa; /* Tailwind blue-400 */
+        }
+        .memory-card .card-back {
+            background-color: #93c5fd; /* Tailwind blue-300 */
+            transform: rotateY(180deg);
+        }
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+        }
+         .memory-card.matched {
+            background-color: #4ade80; /* Tailwind green-400 */
+            cursor: default;
+            opacity: 0.7;
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 100; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 500px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4 md:p-8">
+    <div class="container mx-auto max-w-5xl bg-white shadow-xl rounded-lg p-6 md:p-10">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-600">大腦健康中心</h1>
+            <p class="text-gray-600 mt-2">探索促進認知健康的日常行為、互動工具與益智遊戲</p>
+        </header>
+
+        <div class="mb-6 border-b border-gray-300">
+            <nav class="flex flex-wrap -mb-px" aria-label="Tabs">
+                <button class="tab-button active text-lg font-medium mr-2 py-3 px-5 rounded-t-lg hover:bg-blue-500 hover:text-white focus:outline-none" onclick="openTab(event, 'learningUnits')">
+                    學習重點
+                </button>
+                <button class="tab-button text-lg font-medium mr-2 py-3 px-5 rounded-t-lg hover:bg-blue-500 hover:text-white focus:outline-none" onclick="openTab(event, 'simulators')">
+                    健腦模擬器
+                </button>
+                <button class="tab-button text-lg font-medium py-3 px-5 rounded-t-lg hover:bg-blue-500 hover:text-white focus:outline-none" onclick="openTab(event, 'games')">
+                    益智小遊戲
+                </button>
+            </nav>
+        </div>
+
+        <div id="learningUnits" class="tab-content active p-4">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-6">學習重點：大腦保健全方位指南</h2>
+            
+            <div class="space-y-6">
+                <section class="bg-blue-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3">一、可塑的大腦：掌控您的腦部健康</h3>
+                    <p class="mb-2">大腦具有<strong class="text-blue-700">神經可塑性</strong>，意味著它能終身形成新的神經連接。參與具挑戰性的活動能刺激腦源性神經營養因子 (BDNF)，對神經元生長至關重要。</p>
+                    <p>腦部健康並非一成不變，可以透過後天努力塑造。</p>
+                </section>
+
+                <section class="bg-green-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-green-600 mb-3">二、腦部健康關鍵生活方式支柱</h3>
+                    <p class="mb-4">維護與提升腦部健康需從多方面著手，這些支柱緊密相連、相互影響：</p>
+                    <ul class="list-disc list-inside space-y-3 pl-4">
+                        <li>
+                            <strong class="text-green-700">體育鍛鍊：</strong>
+                            <ul class="list-circle list-inside pl-6 mt-1 space-y-1 text-sm text-gray-700">
+                                <li><strong>有氧運動：</strong>每週至少150分鐘中等強度或75分鐘高強度 (快走、慢跑、游泳)。促進BDNF，改善記憶力、執行功能。</li>
+                                <li><strong>阻力/肌力訓練：</strong>每週至少2次。增強認知控制、記憶表現。</li>
+                                <li><strong>身心運動：</strong>瑜伽、太極拳。改善情緒調節、壓力減輕、認知彈性。</li>
+                                <li><strong>雙重任務運動：</strong>運動結合認知挑戰 (邊走路邊算數)。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong class="text-green-700">飲食與營養：</strong>
+                            <ul class="list-circle list-inside pl-6 mt-1 space-y-1 text-sm text-gray-700">
+                                <li><strong>MIND飲食法：</strong>強調綠葉蔬菜(每週≥7份)、其他蔬菜(每週≥7份)、莓果(每週≥5份)、堅果(每週≥5份)、橄欖油、全穀物、魚類、豆類、家禽。限制紅肉、奶油、起司、甜食、油炸食品。</li>
+                                <li><strong>關鍵營養素：</strong>Omega-3脂肪酸 (魚油、堅果)、抗氧化物 (蔬果)、維生素B群、水分。</li>
+                                <li><strong>限制：</strong>「壞油」(沙拉油、反式脂肪)、加工食品、過量糖分。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong class="text-green-700">腦力激盪與認知訓練：</strong>
+                            <ul class="list-circle list-inside pl-6 mt-1 space-y-1 text-sm text-gray-700">
+                                <li><strong>終身學習：</strong>學習新技能，如語言 (每日15-20分鐘)、樂器 (每日20-30分鐘)。</li>
+                                <li><strong>益智遊戲與活動：</strong>閱讀、拼圖、棋盤遊戲、數獨。</li>
+                                <li><strong>保持好奇心與參與度。</strong></li>
+                            </ul>
+                        </li>
+                        <li><strong class="text-green-700">優質睡眠：</strong>對記憶鞏固至關重要。</li>
+                        <li><strong class="text-green-700">社交互動：</strong>積極參與社交活動。</li>
+                        <li><strong class="text-green-700">壓力管理：</strong>學習放鬆技巧，如冥想、深呼吸。</li>
+                    </ul>
+                </section>
+
+                <section class="bg-yellow-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">三、及早並終身實踐</h3>
+                    <p>及早並終身實踐有益大腦的行為，能帶來顯著的神經保護效益，可能延緩或降低認知衰退及失智症的風險。「永遠不會太早，也永遠不會太晚開始」保護我們的大腦。</p>
+                </section>
+            </div>
+        </div>
+
+        <div id="simulators" class="tab-content p-4">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-6">健腦模擬器：互動體驗</h2>
+            
+            <div class="space-y-8">
+                <section class="bg-indigo-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-indigo-600 mb-4">MIND飲食法簡易檢視器</h3>
+                    <p class="mb-4 text-sm text-gray-600">根據MIND飲食法的建議，勾選您通常一週內會達成的項目：</p>
+                    <div id="mindDietForm" class="space-y-3">
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少7份綠葉蔬菜 (如菠菜、羽衣甘藍)</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少7份其他蔬菜</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少5份莓果 (如藍莓、草莓)</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少5份堅果</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 主要使用橄欖油</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少21份全穀物 (每日3份以上)</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少1份魚類 (非油炸)</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少3份豆類</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少2份家禽 (非油炸、去皮)</label></div>
+                        <hr class="my-3">
+                        <p class="text-sm text-gray-600">以下項目應限制，勾選代表您「有」成功限制：</p>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週紅肉少於4餐</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週奶油/人造奶油少於7小塊 (每日<1湯匙)</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週起司少於2份</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週糕點/甜食少於5份</label></div>
+                        <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週速食/油炸食品少於1餐</label></div>
+                    </div>
+                    <button onclick="calculateMindScore()" class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow focus:outline-none">計算我的MIND飲食 adherence</button>
+                    <div id="mindScoreResult" class="mt-4 text-lg font-semibold"></div>
+                </section>
+
+                <section class="bg-teal-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-4">簡易健腦活動規劃建議</h3>
+                    <p class="mb-2 text-sm text-gray-600">選擇您感興趣的健腦活動類型，看看一週可以如何安排：</p>
+                    <select id="activityType" class="w-full md:w-1/2 p-2 border border-gray-300 rounded-md focus:ring-teal-500 focus:border-teal-500 mb-3">
+                        <option value="aerobic">有氧運動</option>
+                        <option value="strength">肌力訓練</option>
+                        <option value="mindBody">身心運動</option>
+                        <option value="cognitive">認知訓練</option>
+                    </select>
+                    <button onclick="getActivitySuggestion()" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-lg shadow focus:outline-none">獲取建議</button>
+                    <div id="activitySuggestionResult" class="mt-4 p-4 bg-white rounded-md border border-teal-200"></div>
+                </section>
+            </div>
+        </div>
+
+        <div id="games" class="tab-content p-4">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-6">益智小遊戲：腦力鍛鍊</h2>
+            <p class="mb-6 text-gray-600">透過以下小遊戲來活化您的大腦，鍛鍊記憶力與專注力！</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="game-card bg-purple-100 p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-3">記憶配對</h3>
+                    <p class="text-sm text-purple-600 mb-4">翻開卡片，找出所有相同的配對。考驗您的短期記憶力！</p>
+                    <button onclick="startMemoryGame()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none">開始遊戲</button>
+                    <div id="memoryGameContainer" class="mt-4"></div>
+                </div>
+
+                <div class="game-card bg-orange-100 p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-semibold text-orange-700 mb-3">快速計算</h3>
+                    <p class="text-sm text-orange-600 mb-4">在限定時間內完成數學題目。提升您的計算速度與專注力！</p>
+                    <input type="number" id="mathAnswer" placeholder="輸入答案" class="p-2 border rounded w-full mb-2 text-center">
+                    <div id="mathProblem" class="text-lg font-bold mb-2"></div>
+                    <button onclick="startMathGame()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none mr-2">出題</button>
+                    <button onclick="checkMathAnswer()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none">檢查答案</button>
+                    <div id="mathResult" class="mt-2 text-sm"></div>
+                </div>
+                 <div class="game-card bg-cyan-100 p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-3">字母重組</h3>
+                    <p class="text-sm text-cyan-600 mb-4">將打亂的字母重新排列成一個有意義的詞彙 (提示: 與大腦健康相關)。</p>
+                    <div id="scrambledWord" class="text-2xl font-bold tracking-widest my-3"></div>
+                    <input type="text" id="wordGuess" placeholder="猜猜看是什麼詞" class="p-2 border rounded w-full mb-2 text-center">
+                    <button onclick="startWordScramble()" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none mr-2">換一個詞</button>
+                    <button onclick="checkWordGuess()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none">檢查答案</button>
+                    <div id="wordScrambleResult" class="mt-2 text-sm"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gameResultModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('gameResultModal')">&times;</span>
+            <h3 id="modalTitle" class="text-xl font-semibold mb-3">遊戲結束！</h3>
+            <p id="modalMessage" class="mb-4"></p>
+            <button id="modalButton" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="closeModal('gameResultModal')">知道了</button>
+        </div>
+    </div>
+
+
+    <script>
+        // Tab script
+        function openTab(event, tabName) {
+            let i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        // MIND Diet Score Calculator
+        function calculateMindScore() {
+            const form = document.getElementById('mindDietForm');
+            const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+            let score = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    score += parseInt(checkbox.dataset.points);
+                }
+            });
+            const resultDiv = document.getElementById('mindScoreResult');
+            resultDiv.textContent = `您的MIND飲食 adherence 分數： ${score} / ${checkboxes.length}。分數越高代表越接近MIND飲食建議。`;
+            if (score >= checkboxes.length * 0.75) { // Example threshold
+                 resultDiv.textContent += " 做得很棒！繼續保持！";
+                 resultDiv.className = "mt-4 text-lg font-semibold text-green-600";
+            } else if (score >= checkboxes.length * 0.5) {
+                 resultDiv.textContent += " 不錯，但還有進步空間！";
+                 resultDiv.className = "mt-4 text-lg font-semibold text-yellow-600";
+            } else {
+                 resultDiv.textContent += " 加油！可以參考學習重點中的MIND飲食建議來調整。";
+                 resultDiv.className = "mt-4 text-lg font-semibold text-red-600";
+            }
+        }
+
+        // Weekly Activity Planner
+        function getActivitySuggestion() {
+            const activityType = document.getElementById('activityType').value;
+            const suggestionResult = document.getElementById('activitySuggestionResult');
+            let suggestion = "";
+            switch (activityType) {
+                case 'aerobic':
+                    suggestion = "<strong>有氧運動建議：</strong><br>目標：每週至少150分鐘中等強度或75分鐘高強度。<br>範例：<br>- 週一、三、五：快走30分鐘。<br>- 週二、四：游泳30分鐘。<br>- 週末：與家人朋友騎自行車60分鐘。<br>小提示：選擇您喜歡的活動，分散在一週內進行。";
+                    break;
+                case 'strength':
+                    suggestion = "<strong>肌力訓練建議：</strong><br>目標：每週至少2次，針對主要肌群。<br>範例：<br>- 週二：深蹲、弓箭步、伏地挺身、划船 (各3組，每組8-12下)。<br>- 週五：硬舉、肩部推舉、引體向上 (或輔助)、核心訓練 (各3組)。<br>小提示：兩次訓練間隔48小時讓肌肉恢復。可使用自身體重、啞鈴或健身器材。";
+                    break;
+                case 'mindBody':
+                    suggestion = "<strong>身心運動建議：</strong><br>目標：規律練習以改善情緒、平衡和專注力。<br>範例：<br>- 每日：10-15分鐘冥想或深呼吸練習。<br>- 每週2-3次：參加瑜伽或太極拳課程 (每次45-60分鐘)。<br>- 週末：在公園練習太極拳30分鐘。<br>小提示：持之以恆是關鍵。";
+                    break;
+                case 'cognitive':
+                    suggestion = "<strong>認知訓練建議：</strong><br>目標：每日進行腦力激盪活動。<br>範例：<br>- 每日：閱讀30分鐘、玩數獨或填字遊戲15分鐘。<br>- 每週：學習新語言單字 (每日15-20分鐘)、練習樂器 (每日20-30分鐘)。<br>- 週末：和朋友玩棋盤遊戲或策略遊戲。<br>小提示：選擇具挑戰性且讓您感興趣的活動。";
+                    break;
+                default:
+                    suggestion = "請選擇一個活動類型以獲取建議。";
+            }
+            suggestionResult.innerHTML = suggestion;
+        }
+
+        // Memory Game Logic
+        let memoryCards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let totalPairs = 0;
+        let memoryGameActive = false;
+        const memoryEmojis = ['🧠', '💪', '🥗', '📖', '🎶', '😴', '🗣️', '🧘']; // Brain, Exercise, Diet, Learning, Music, Sleep, Social, Mindful
+
+        function startMemoryGame() {
+            const gameContainer = document.getElementById('memoryGameContainer');
+            gameContainer.innerHTML = ''; // Clear previous game
+            memoryCards = [];
+            flippedCards = [];
+            matchedPairs = 0;
+            memoryGameActive = true;
+            
+            let gameEmojis = memoryEmojis.slice(0, 4).concat(memoryEmojis.slice(0, 4)); // 4 pairs, 8 cards
+            totalPairs = gameEmojis.length / 2;
+            shuffleArray(gameEmojis);
+
+            const grid = document.createElement('div');
+            grid.className = 'memory-grid';
+
+            gameEmojis.forEach(emoji => {
+                const card = createMemoryCard(emoji);
+                grid.appendChild(card);
+                memoryCards.push(card);
+            });
+            gameContainer.appendChild(grid);
+        }
+
+        function createMemoryCard(emoji) {
+            const card = document.createElement('div');
+            card.classList.add('memory-card');
+            card.dataset.emoji = emoji;
+
+            const cardFaceFront = document.createElement('div');
+            cardFaceFront.classList.add('card-face', 'card-front');
+            // cardFaceFront.textContent = '?'; // Or keep it blank
+
+            const cardFaceBack = document.createElement('div');
+            cardFaceBack.classList.add('card-face', 'card-back');
+            cardFaceBack.textContent = emoji;
+            
+            card.appendChild(cardFaceFront);
+            card.appendChild(cardFaceBack);
+
+            card.addEventListener('click', () => flipCard(card));
+            return card;
+        }
+
+        function flipCard(card) {
+            if (!memoryGameActive || flippedCards.length >= 2 || card.classList.contains('flipped') || card.classList.contains('matched')) {
+                return;
+            }
+            card.classList.add('flipped');
+            flippedCards.push(card);
+
+            if (flippedCards.length === 2) {
+                checkForMatch();
+            }
+        }
+
+        function checkForMatch() {
+            const [card1, card2] = flippedCards;
+            if (card1.dataset.emoji === card2.dataset.emoji) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                matchedPairs++;
+                flippedCards = [];
+                if (matchedPairs === totalPairs) {
+                    memoryGameActive = false;
+                    setTimeout(() => showModal('gameResultModal', '恭喜！', `您成功找到了所有 ${totalPairs} 組配對！`, () => startMemoryGame()), 500);
+                }
+            } else {
+                setTimeout(() => {
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                    flippedCards = [];
+                }, 1000);
+            }
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Quick Math Game
+        let mathNum1, mathNum2, mathCorrectAnswer;
+        function startMathGame() {
+            mathNum1 = Math.floor(Math.random() * 10) + 1;
+            mathNum2 = Math.floor(Math.random() * 10) + 1;
+            const operations = ['+', '-', '*'];
+            const operation = operations[Math.floor(Math.random() * operations.length)];
+            
+            let problemText = `${mathNum1} ${operation} ${mathNum2} = ?`;
+            if (operation === '-' && mathNum1 < mathNum2) { // Avoid negative results for simplicity
+                [mathNum1, mathNum2] = [mathNum2, mathNum1];
+                problemText = `${mathNum1} ${operation} ${mathNum2} = ?`;
+            }
+
+            document.getElementById('mathProblem').textContent = problemText;
+            document.getElementById('mathAnswer').value = '';
+            document.getElementById('mathResult').textContent = '';
+
+            switch (operation) {
+                case '+': mathCorrectAnswer = mathNum1 + mathNum2; break;
+                case '-': mathCorrectAnswer = mathNum1 - mathNum2; break;
+                case '*': mathCorrectAnswer = mathNum1 * mathNum2; break;
+            }
+        }
+
+        function checkMathAnswer() {
+            const userAnswer = parseInt(document.getElementById('mathAnswer').value);
+            const resultDiv = document.getElementById('mathResult');
+            if (isNaN(userAnswer)) {
+                resultDiv.textContent = "請輸入數字答案。";
+                resultDiv.className = "mt-2 text-sm text-red-500";
+                return;
+            }
+            if (userAnswer === mathCorrectAnswer) {
+                resultDiv.textContent = "答對了！太棒了！";
+                resultDiv.className = "mt-2 text-sm text-green-500";
+                setTimeout(startMathGame, 1500); // New problem after correct answer
+            } else {
+                resultDiv.textContent = `不對喔，正確答案是 ${mathCorrectAnswer}。再試一次！`;
+                resultDiv.className = "mt-2 text-sm text-red-500";
+            }
+        }
+        
+        // Word Scramble Game
+        const brainWords = ["大腦", "學習", "記憶", "運動", "飲食", "思考", "神經", "健康", "專注"];
+        let currentWord = "";
+        let currentScrambled = "";
+
+        function scrambleWord(word) {
+            let arr = word.split('');
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr.join('');
+        }
+
+        function startWordScramble() {
+            currentWord = brainWords[Math.floor(Math.random() * brainWords.length)];
+            currentScrambled = scrambleWord(currentWord);
+            // Ensure it's actually scrambled, especially for short words
+            while(currentScrambled === currentWord && currentWord.length > 1) {
+                 currentScrambled = scrambleWord(currentWord);
+            }
+            document.getElementById('scrambledWord').textContent = currentScrambled;
+            document.getElementById('wordGuess').value = '';
+            document.getElementById('wordScrambleResult').textContent = '';
+        }
+
+        function checkWordGuess() {
+            const userGuess = document.getElementById('wordGuess').value.trim();
+            const resultDiv = document.getElementById('wordScrambleResult');
+            if (userGuess === "") {
+                resultDiv.textContent = "請輸入您猜的詞彙。";
+                resultDiv.className = "mt-2 text-sm text-red-500";
+                return;
+            }
+            if (userGuess === currentWord) {
+                resultDiv.textContent = "答對了！就是「" + currentWord + "」！";
+                resultDiv.className = "mt-2 text-sm text-green-500";
+                setTimeout(startWordScramble, 2000); 
+            } else {
+                resultDiv.textContent = "不對喔，再想想看！";
+                resultDiv.className = "mt-2 text-sm text-red-500";
+            }
+        }
+
+
+        // Modal functions
+        function showModal(modalId, title, message, buttonAction) {
+            const modal = document.getElementById(modalId);
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalMessage').textContent = message;
+            const modalButton = document.getElementById('modalButton');
+            
+            if (buttonAction) {
+                // Clone and replace the button to remove old event listeners
+                const newButton = modalButton.cloneNode(true);
+                modalButton.parentNode.replaceChild(newButton, modalButton);
+                document.getElementById('modalButton').textContent = "再玩一次"; // Or specific text
+                document.getElementById('modalButton').onclick = () => {
+                    closeModal(modalId);
+                    buttonAction();
+                };
+            } else {
+                 document.getElementById('modalButton').textContent = "知道了";
+                 document.getElementById('modalButton').onclick = () => closeModal(modalId);
+            }
+            modal.style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('gameResultModal');
+            if (event.target == modal) {
+                closeModal('gameResultModal');
+            }
+        }
+
+        // Initialize default tab and games
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.tab-button.active').click(); // Activate the first tab
+            startMathGame(); // Initialize first math problem
+            startWordScramble(); // Initialize first word scramble
+        });
+
+    </script>
+</body>
+</html>
