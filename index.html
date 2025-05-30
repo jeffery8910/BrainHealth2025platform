@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="zh-Hant">
  <head>
      <meta charset="UTF-8">
@@ -29,30 +29,30 @@
          /* Memory Game Specific Styles */
          .memory-grid {
              display: grid;
-             grid-template-columns: repeat(4, 1fr); /* 調整欄數 */
-             gap: 8px; /* 調整間距 */
-             width: auto; /* 根據內容自動調整寬度 */
-             margin: 10px auto;
-             max-width: 300px; /* 限制最大寬度 */
+             grid-template-columns: repeat(4, 1fr); /* 4 columns */
+             gap: 8px; /* Space between cards */
+             width: auto; /* Adjust width based on content */
+             margin: 10px auto; /* Center the grid */
+             max-width: 280px; /* Max width for the grid (4 * 60px card + 3 * 8px gap = 240 + 24 = 264px) */
          }
          .memory-card {
-             width: 60px; /* 固定寬度 */
-             height: 60px; /* 固定高度 */
+             width: 60px; /* Fixed width for cards */
+             height: 60px; /* Fixed height for cards */
              background-color: #93c5fd; /* Tailwind blue-300 */
              border-radius: 8px;
              display: flex;
              justify-content: center;
              align-items: center;
-             font-size: 20px; /* 調整字體大小 */
+             font-size: 20px; /* Adjust font size for emoji */
              cursor: pointer;
              transition: transform 0.3s, background-color 0.3s;
-             perspective: 1000px;
+             perspective: 1000px; /* For 3D flip effect */
          }
          .memory-card .card-face {
              position: absolute;
              width: 100%;
              height: 100%;
-             backface-visibility: hidden;
+             backface-visibility: hidden; /* Hide back of card during flip */
              display: flex;
              justify-content: center;
              align-items: center;
@@ -60,18 +60,18 @@
          }
          .memory-card .card-front {
              background-color: #60a5fa; /* Tailwind blue-400 */
-             font-size: 24px;
+             font-size: 24px; /* Font size for the '?' */
              color: white;
          }
          .memory-card .card-back {
              background-color: #93c5fd; /* Tailwind blue-300 */
-             transform: rotateY(180deg);
+             transform: rotateY(180deg); /* Initially hide by rotating */
          }
          .memory-card.flipped {
-             transform: rotateY(180deg);
+             transform: rotateY(180deg); /* Rotate card to show back */
          }
           .memory-card.matched {
-             background-color: #4ade80; /* Tailwind green-400 */
+             background-color: #4ade80; /* Tailwind green-400 for matched cards */
              cursor: default;
              opacity: 0.7;
          }
@@ -114,8 +114,8 @@
              border-top: 1px solid #e5e7eb; /* Tailwind gray-200 */
          }
          .reference-section h2 {
-             font-size: 1.5rem;
-             font-weight: bold;
+             font-size: 1.5rem; /* Tailwind text-xl */
+             font-weight: 600; /* Tailwind semibold */
              color: #374151; /* Tailwind gray-700 */
              margin-bottom: 1rem;
          }
@@ -152,14 +152,12 @@
 
          <div id="learningUnits" class="tab-content active p-4">
              <h2 class="text-2xl font-semibold text-blue-700 mb-6">學習重點：大腦保健全方位指南</h2>
-
              <div class="space-y-6">
                  <section class="bg-blue-50 p-6 rounded-lg shadow">
                      <h3 class="text-xl font-semibold text-blue-600 mb-3">一、可塑的大腦：掌控您的腦部健康</h3>
                      <p class="mb-2">大腦具有<strong class="text-blue-700">神經可塑性</strong>，意味著它能終身形成新的神經連接。參與具挑戰性的活動能刺激腦源性神經營養因子 (BDNF)，對神經元生長至關重要。</p>
                      <p>腦部健康並非一成不變，可以透過後天努力塑造。</p>
                  </section>
-
                  <section class="bg-green-50 p-6 rounded-lg shadow">
                      <h3 class="text-xl font-semibold text-green-600 mb-3">二、腦部健康關鍵生活方式支柱</h3>
                      <p class="mb-4">維護與提升腦部健康需從多方面著手，這些支柱緊密相連、相互影響：</p>
@@ -194,7 +192,6 @@
                          <li><strong class="text-green-700">壓力管理：</strong>學習放鬆技巧，如冥想、深呼吸。</li>
                      </ul>
                  </section>
-
                  <section class="bg-yellow-50 p-6 rounded-lg shadow">
                      <h3 class="text-xl font-semibold text-yellow-700 mb-3">三、及早並終身實踐</h3>
                      <p>及早並終身實踐有益大腦的行為，能帶來顯著的神經保護效益，可能延緩或降低認知衰退及失智症的風險。「永遠不會太早，也永遠不會太晚開始」保護我們的大腦。</p>
@@ -204,7 +201,6 @@
 
          <div id="simulators" class="tab-content p-4">
              <h2 class="text-2xl font-semibold text-blue-700 mb-6">健腦模擬器：互動體驗</h2>
-
              <div class="space-y-8">
                  <section class="bg-indigo-50 p-6 rounded-lg shadow">
                      <h3 class="text-xl font-semibold text-indigo-600 mb-4">MIND飲食法簡易檢視器</h3>
@@ -219,15 +215,15 @@
                          <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少1份魚類 (非油炸)</label></div>
                          <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少3份豆類</label></div>
                          <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週至少2份家禽 (非油炸、去皮)</label></div>
-                         <hr class="my-3">
+                         <hr class="my-3 border-indigo-200">
                          <p class="text-sm text-gray-600">以下項目應限制，勾選代表您「有」成功限制：</p>
                          <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週紅肉少於4餐</label></div>
-                         <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週奶油/人造奶油少於7小塊 (每日<1湯匙)</label></div>
+                         <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週奶油/人造奶油少於7小塊 (每日&lt;1湯匙)</label></div>
                          <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週起司少於2份</label></div>
                          <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週糕點/甜食少於5份</label></div>
                          <div><label class="flex items-center"><input type="checkbox" class="form-checkbox h-5 w-5 text-indigo-600 rounded mr-2" data-points="1"> 每週速食/油炸食品少於1餐</label></div>
                      </div>
-                     <button onclick="calculateMindScore()" class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow focus:outline-none">計算我的MIND飲食 adherence</button>
+                     <button onclick="calculateMindScore()" class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">計算我的MIND飲食 adherence</button>
                      <div id="mindScoreResult" class="mt-4 text-lg font-semibold"></div>
                  </section>
 
@@ -240,8 +236,8 @@
                          <option value="mindBody">身心運動</option>
                          <option value="cognitive">認知訓練</option>
                      </select>
-                     <button onclick="getActivitySuggestion()" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-lg shadow focus:outline-none">獲取建議</button>
-                     <div id="activitySuggestionResult" class="mt-4 p-4 bg-white rounded-md border border-teal-200"></div>
+                     <button onclick="getActivitySuggestion()" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50">獲取建議</button>
+                     <div id="activitySuggestionResult" class="mt-4 p-4 bg-white rounded-md border border-teal-200 text-sm"></div>
                  </section>
              </div>
          </div>
@@ -249,54 +245,55 @@
          <div id="games" class="tab-content p-4">
              <h2 class="text-2xl font-semibold text-blue-700 mb-6">益智小遊戲：腦力鍛鍊</h2>
              <p class="mb-6 text-gray-600">透過以下小遊戲來活化您的大腦，鍛鍊記憶力與專注力！</p>
-
              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                  <div class="game-card bg-purple-100 p-6 rounded-lg shadow-md text-center">
                      <h3 class="text-xl font-semibold text-purple-700 mb-3">記憶配對</h3>
                      <p class="text-sm text-purple-600 mb-4">翻開卡片，找出所有相同的配對。考驗您的短期記憶力！</p>
-                     <button onclick="startMemoryGame()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none">開始遊戲</button>
-                     <div id="memoryGameContainer" class="mt-4 flex justify-center items-center"></div> </div>
+                     <button onclick="startMemoryGame()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">開始遊戲</button>
+                     <div id="memoryGameContainer" class="mt-4 flex justify-center items-center">
+                         </div>
+                 </div>
 
                  <div class="game-card bg-orange-100 p-6 rounded-lg shadow-md text-center">
                      <h3 class="text-xl font-semibold text-orange-700 mb-3">快速計算</h3>
                      <p class="text-sm text-orange-600 mb-4">在限定時間內完成數學題目。提升您的計算速度與專注力！</p>
-                     <input type="number" id="mathAnswer" placeholder="輸入答案" class="p-2 border rounded w-full mb-2 text-center">
-                     <div id="mathProblem" class="text-lg font-bold mb-2"></div>
-                     <button onclick="startMathGame()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none mr-2">出題</button>
-                     <button onclick="checkMathAnswer()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none">檢查答案</button>
-                     <div id="mathResult" class="mt-2 text-sm"></div>
+                     <div id="mathProblem" class="text-2xl font-bold mb-3 h-8"></div>
+                     <input type="number" id="mathAnswer" placeholder="輸入答案" class="p-2 border border-orange-300 rounded w-full mb-3 text-center focus:ring-orange-500 focus:border-orange-500">
+                     <button onclick="startMathGame()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none mr-2 focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50">出題</button>
+                     <button onclick="checkMathAnswer()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">檢查答案</button>
+                     <div id="mathResult" class="mt-3 text-sm h-5"></div>
                  </div>
-                  <div class="game-card bg-cyan-100 p-6 rounded-lg shadow-md text-center">
+
+                 <div class="game-card bg-cyan-100 p-6 rounded-lg shadow-md text-center">
                      <h3 class="text-xl font-semibold text-cyan-700 mb-3">字母重組</h3>
                      <p class="text-sm text-cyan-600 mb-4">將打亂的字母重新排列成一個有意義的詞彙 (提示: 與大腦健康相關)。</p>
-                     <div id="scrambledWord" class="text-2xl font-bold tracking-widest my-3"></div>
-                     <input type="text" id="wordGuess" placeholder="猜猜看是什麼詞" class="p-2 border rounded w-full mb-2 text-center">
-                     <button onclick="startWordScramble()" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none mr-2">換一個詞</button>
-                     <button onclick="checkWordGuess()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none">檢查答案</button>
-                     <div id="wordScrambleResult" class="mt-2 text-sm"></div>
+                     <div id="scrambledWord" class="text-2xl font-bold tracking-widest my-3 h-8"></div>
+                     <input type="text" id="wordGuess" placeholder="猜猜看是什麼詞" class="p-2 border border-cyan-300 rounded w-full mb-3 text-center focus:ring-cyan-500 focus:border-cyan-500">
+                     <button onclick="startWordScramble()" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none mr-2 focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50">換一個詞</button>
+                     <button onclick="checkWordGuess()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">檢查答案</button>
+                     <div id="wordScrambleResult" class="mt-3 text-sm h-5"></div>
                  </div>
              </div>
          </div>
 
          <section class="reference-section">
-             <h2 class="text-xl font-semibold text-gray-700 mb-4">參考文獻</h2>
+             <h2>參考文獻</h2>
              <ul>
-                 <li>(請在此處填寫您的參考文獻)</li>
-                 <li>(請在此處填寫您的參考文獻)</li>
-                 <li>(請在此處填寫您的參考文獻)</li>
-                 </ul>
+                 <li>促進大腦健康的日常行為 (使用者提供的文件)</li>
+                 <li>範例參考文獻條目 1</li>
+                 <li>範例參考文獻條目 2</li>
+             </ul>
          </section>
      </div>
 
      <div id="gameResultModal" class="modal">
          <div class="modal-content">
              <span class="close-button" onclick="closeModal('gameResultModal')">&times;</span>
-             <h3 id="modalTitle" class="text-xl font-semibold mb-3">遊戲結束！</h3>
+             <h3 id="modalTitle" class="text-xl font-semibold mb-3">遊戲結果</h3>
              <p id="modalMessage" class="mb-4"></p>
-             <button id="modalButton" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg" onclick="closeModal('gameResultModal')">知道了</button>
+             <button id="modalButton" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" onclick="closeModal('gameResultModal')">知道了</button>
          </div>
      </div>
-
 
      <script>
          // Tab script
@@ -304,11 +301,11 @@
              let i, tabcontent, tabbuttons;
              tabcontent = document.getElementsByClassName("tab-content");
              for (i = 0; i < tabcontent.length; i++) {
-                 tabcontent.style.display = "none";
+                 tabcontent[i].style.display = "none"; // Corrected: apply to tabcontent[i]
              }
              tabbuttons = document.getElementsByClassName("tab-button");
              for (i = 0; i < tabbuttons.length; i++) {
-                 tabbuttons = tabbuttons.className.replace(" active", "");
+                 tabbuttons[i].className = tabbuttons[i].className.replace(" active", ""); // Corrected: apply to tabbuttons[i]
              }
              document.getElementById(tabName).style.display = "block";
              event.currentTarget.className += " active";
@@ -317,19 +314,23 @@
          // MIND Diet Score Calculator
          function calculateMindScore() {
              const form = document.getElementById('mindDietForm');
-             const checkboxes = form.querySelectorAll('input.form-checkbox');
+             const checkboxes = form.querySelectorAll('input[type="checkbox"]'); // Corrected selector
              let score = 0;
+             let totalPossiblePoints = 0;
              checkboxes.forEach(checkbox => {
-                 if (checkbox.checked) {
-                     score += parseInt(checkbox.dataset.points);
+                 if (checkbox.dataset.points) { // Ensure it's a scorable item
+                    totalPossiblePoints += parseInt(checkbox.dataset.points);
+                    if (checkbox.checked) {
+                        score += parseInt(checkbox.dataset.points);
+                    }
                  }
              });
              const resultDiv = document.getElementById('mindScoreResult');
-             resultDiv.textContent = `您的MIND飲食 adherence 分數： ${score} / ${checkboxes.length}。分數越高代表越接近MIND飲食建議。`;
-             if (score >= checkboxes.length * 0.75) { // Example threshold
+             resultDiv.textContent = `您的MIND飲食 adherence 分數： ${score} / ${totalPossiblePoints}。分數越高代表越接近MIND飲食建議。`;
+             if (score >= totalPossiblePoints * 0.75) {
                   resultDiv.textContent += " 做得很棒！繼續保持！";
                   resultDiv.className = "mt-4 text-lg font-semibold text-green-600";
-             } else if (score >= checkboxes.length * 0.5) {
+             } else if (score >= totalPossiblePoints * 0.5) {
                   resultDiv.textContent += " 不錯，但還有進步空間！";
                   resultDiv.className = "mt-4 text-lg font-semibold text-yellow-600";
              } else {
@@ -368,7 +369,7 @@
          let matchedPairs = 0;
          let totalPairs = 0;
          let memoryGameActive = false;
-         const memoryEmojis = ['🧠', '💪', '🥗', '📖', '🎶', '😴', '🗣️', '🧘']; // Brain, Exercise, Diet, Learning, Music, Sleep, Social, Mindful
+         const memoryEmojis = ['🧠', '💪', '🥗', '📖', '🎶', '😴', '🗣️', '🧘'];
 
          function startMemoryGame() {
              const gameContainer = document.getElementById('memoryGameContainer');
@@ -378,7 +379,8 @@
              matchedPairs = 0;
              memoryGameActive = true;
 
-             let gameEmojis = memoryEmojis.slice(0, 4).concat(memoryEmojis.slice(0, 4)); // 4 pairs, 8 cards
+             // Use 4 pairs (8 cards) for a 4x2 grid, or adjust as needed
+             let gameEmojis = memoryEmojis.slice(0, 4).concat(memoryEmojis.slice(0, 4));
              totalPairs = gameEmojis.length / 2;
              shuffleArray(gameEmojis);
 
@@ -400,11 +402,11 @@
 
              const cardFaceFront = document.createElement('div');
              cardFaceFront.classList.add('card-face', 'card-front');
-             cardFaceFront.textContent = '?'; // 顯示問號在正面
+             cardFaceFront.textContent = '?'; // Show '?' on the front
 
              const cardFaceBack = document.createElement('div');
              cardFaceBack.classList.add('card-face', 'card-back');
-             cardFaceBack.textContent = emoji;
+             cardFaceBack.textContent = emoji; // Emoji on the back
 
              card.appendChild(cardFaceFront);
              card.appendChild(cardFaceBack);
@@ -437,6 +439,7 @@
                      setTimeout(() => showModal('gameResultModal', '恭喜！', `您成功找到了所有 ${totalPairs} 組配對！`, () => startMemoryGame()), 500);
                  }
              } else {
+                 // Not a match, flip back after a delay
                  setTimeout(() => {
                      card1.classList.remove('flipped');
                      card2.classList.remove('flipped');
@@ -448,29 +451,29 @@
          function shuffleArray(array) {
              for (let i = array.length - 1; i > 0; i--) {
                  const j = Math.floor(Math.random() * (i + 1));
-                 ([array(i), array(j)] = [array(j), array(i)]);
+                 [array[i], array[j]] = [array[j], array[i]]; // Corrected array element access
              }
          }
 
          // Quick Math Game
-         let mathNum1, mathNum2, mathCorrectAnswer;
+         let mathNum1, mathNum2, mathCorrectAnswer, currentMathOperation;
          function startMathGame() {
              mathNum1 = Math.floor(Math.random() * 10) + 1;
              mathNum2 = Math.floor(Math.random() * 10) + 1;
              const operations = ['+', '-', '*'];
-             const operation = operations(Math.floor(Math.random() * operations.length));
+             currentMathOperation = operations[Math.floor(Math.random() * operations.length)]; // Corrected array element access
 
-             let problemText = `${mathNum1} ${operation} ${mathNum2} = ?`;
-             if (operation === '-' && mathNum1 < mathNum2) { // Avoid negative results for simplicity
-                 ([mathNum1, mathNum2] = [mathNum2, mathNum1]);
-                 problemText = `${mathNum1} ${operation} ${mathNum2} = ?`;
+             let problemText = `${mathNum1} ${currentMathOperation} ${mathNum2} = ?`;
+             if (currentMathOperation === '-' && mathNum1 < mathNum2) {
+                 [mathNum1, mathNum2] = [mathNum2, mathNum1]; // Swap to ensure positive result for simplicity
+                 problemText = `${mathNum1} ${currentMathOperation} ${mathNum2} = ?`;
              }
 
              document.getElementById('mathProblem').textContent = problemText;
              document.getElementById('mathAnswer').value = '';
              document.getElementById('mathResult').textContent = '';
 
-             switch (operation) {
+             switch (currentMathOperation) {
                  case '+': mathCorrectAnswer = mathNum1 + mathNum2; break;
                  case '-': mathCorrectAnswer = mathNum1 - mathNum2; break;
                  case '*': mathCorrectAnswer = mathNum1 * mathNum2; break;
@@ -478,25 +481,31 @@
          }
 
          function checkMathAnswer() {
-             const userAnswer = parseInt(document.getElementById('mathAnswer').value);
+            const userAnswerText = document.getElementById('mathAnswer').value;
+            if (userAnswerText.trim() === "") {
+                 document.getElementById('mathResult').textContent = "請輸入答案。";
+                 document.getElementById('mathResult').className = "mt-3 text-sm h-5 text-red-500";
+                 return;
+            }
+             const userAnswer = parseInt(userAnswerText);
              const resultDiv = document.getElementById('mathResult');
-             if (isNaN(userAnswer)) {
-                 resultDiv.textContent = "請輸入數字答案。";
-                 resultDiv.className = "mt-2 text-sm text-red-500";
+             if (isNaN(userAnswer)) { // Should not happen if input type="number" but good to check
+                 resultDiv.textContent = "請輸入有效的數字。";
+                 resultDiv.className = "mt-3 text-sm h-5 text-red-500";
                  return;
              }
              if (userAnswer === mathCorrectAnswer) {
                  resultDiv.textContent = "答對了！太棒了！";
-                 resultDiv.className = "mt-2 text-sm text-green-500";
-                 setTimeout(startMathGame, 1500); // New problem after correct answer
+                 resultDiv.className = "mt-3 text-sm h-5 text-green-500";
+                 setTimeout(startMathGame, 1500); 
              } else {
-                 resultDiv.textContent = `不對喔，正確答案是 ${mathCorrectAnswer}。再試一次！`;
-                 resultDiv.className = "mt-2 text-sm text-red-500";
+                 resultDiv.textContent = `不對喔，正確答案是 ${mathCorrectAnswer}。`;
+                 resultDiv.className = "mt-3 text-sm h-5 text-red-500";
              }
          }
 
          // Word Scramble Game
-         const brainWords = ["大腦", "學習", "記憶", "運動", "飲食", "思考", "神經", "健康", "專注"];
+         const brainWords = ["大腦", "學習", "記憶", "運動", "飲食", "思考", "神經", "健康", "專注", "睡眠"];
          let currentWord = "";
          let currentScrambled = "";
 
@@ -504,13 +513,89 @@
              let arr = word.split('');
              for (let i = arr.length - 1; i > 0; i--) {
                  const j = Math.floor(Math.random() * (i + 1));
-                 ([arr(i), arr(j)] = [arr(j), arr(i)]);
+                 [arr[i], arr[j]] = [arr[j], arr[i]]; // Corrected array element access
              }
              return arr.join('');
          }
 
          function startWordScramble() {
-             currentWord = brainWords(Math.floor(Math.random() * brainWords.length));
+             currentWord = brainWords[Math.floor(Math.random() * brainWords.length)]; // Corrected array element access
              currentScrambled = scrambleWord(currentWord);
-             // Ensure it's actually scrambled, especially for short words
-             while(currentScrambled === currentWord
+             while(currentScrambled === currentWord && currentWord.length > 1) { // Ensure it's actually scrambled
+                  currentScrambled = scrambleWord(currentWord);
+             }
+             document.getElementById('scrambledWord').textContent = currentScrambled;
+             document.getElementById('wordGuess').value = '';
+             document.getElementById('wordScrambleResult').textContent = '';
+         }
+
+         function checkWordGuess() {
+             const userGuess = document.getElementById('wordGuess').value.trim();
+             const resultDiv = document.getElementById('wordScrambleResult');
+              if (userGuess === "") {
+                 resultDiv.textContent = "請輸入您猜的詞彙。";
+                 resultDiv.className = "mt-3 text-sm h-5 text-red-500";
+                 return;
+             }
+             if (userGuess === currentWord) {
+                 resultDiv.textContent = "答對了！是「" + currentWord + "」！";
+                 resultDiv.className = "mt-3 text-sm h-5 text-green-500";
+                 setTimeout(startWordScramble, 2000); 
+             } else {
+                 resultDiv.textContent = "不對喔，再想想看！";
+                 resultDiv.className = "mt-3 text-sm h-5 text-red-500";
+             }
+         }
+
+         // Modal functions
+         function showModal(modalId, title, message, buttonAction) {
+             const modal = document.getElementById(modalId);
+             document.getElementById('modalTitle').textContent = title;
+             document.getElementById('modalMessage').textContent = message;
+             const modalButton = document.getElementById('modalButton');
+             
+             // Clone and replace the button to remove old event listeners properly
+             const newButton = modalButton.cloneNode(true);
+             modalButton.parentNode.replaceChild(newButton, modalButton);
+             const freshButton = document.getElementById('modalButton'); // Get the new button
+
+             if (buttonAction) {
+                 freshButton.textContent = "再玩一次";
+                 freshButton.onclick = () => { // Assign new click listener
+                     closeModal(modalId);
+                     buttonAction();
+                 };
+             } else {
+                  freshButton.textContent = "知道了";
+                  freshButton.onclick = () => closeModal(modalId); // Assign new click listener
+             }
+             modal.style.display = "block";
+         }
+
+         function closeModal(modalId) {
+             document.getElementById(modalId).style.display = "none";
+         }
+
+         // Close modal if user clicks outside of it
+         window.onclick = function(event) {
+             const modal = document.getElementById('gameResultModal');
+             if (event.target == modal) {
+                 closeModal('gameResultModal');
+             }
+         }
+
+         // Initialize default tab and games on page load
+         document.addEventListener('DOMContentLoaded', () => {
+             // Ensure the first tab is displayed
+             const firstTabButton = document.querySelector('.tab-button');
+             if (firstTabButton) {
+                openTab({ currentTarget: firstTabButton }, 'learningUnits');
+             }
+             startMathGame(); 
+             startWordScramble();
+             // Memory game starts when user clicks "開始遊戲"
+         });
+
+     </script>
+ </body>
+ </html>
